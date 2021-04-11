@@ -42,6 +42,7 @@ public class SignUpActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
+            Toast.makeText(SignUpActivity.this,"Inscription Complète",Toast.LENGTH_LONG).show();
         }
     }
 
