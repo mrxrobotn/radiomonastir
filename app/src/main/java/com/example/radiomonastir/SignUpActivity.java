@@ -19,8 +19,8 @@ public class SignUpActivity extends AppCompatActivity {
     public void ajoutemembre(View view) {
         EditText champ_nom = findViewById(R.id.editTextTextPersonName);
         EditText champ_email = findViewById(R.id.editTextTextEmailAddress2);
-        EditText champ_passwrod = findViewById(R.id.editTextTextPassword2);
-        EditText champ_confirmepassword = findViewById(R.id.editTextTextPassword3);
+        EditText champ_password = findViewById(R.id.editTextTextPassword2);
+        EditText champ_confirmpassword = findViewById(R.id.editTextTextPassword3);
 
         if(champ_nom.getText().toString().isEmpty()){
             Toast.makeText(SignUpActivity.this,"Ecrire Votre nom et prénom",Toast.LENGTH_LONG).show();
@@ -28,10 +28,10 @@ public class SignUpActivity extends AppCompatActivity {
         else if (champ_email.getText().toString().isEmpty()){
             Toast.makeText(SignUpActivity.this,"Le champ email est vide",Toast.LENGTH_LONG).show();
         }
-        else if (champ_passwrod.getText().toString().isEmpty()){
+        else if (champ_password.getText().toString().isEmpty()){
             Toast.makeText(SignUpActivity.this,"Entrer un mot de passe",Toast.LENGTH_LONG).show();
         }
-        else if (champ_confirmepassword.getText().toString().isEmpty()){
+        else if (champ_confirmpassword.getText().toString().isEmpty()){
             Toast.makeText(SignUpActivity.this,"Champ confirmer est obligatoire",Toast.LENGTH_LONG).show();
         }
         else {
