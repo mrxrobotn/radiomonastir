@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F2F2F2"
+    android:background="#FFFFFF"
     tools:context=".HomeActivity">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
 
     <ImageView
         android:id="@+id/imageView3"
@@ -44,19 +49,27 @@
         android:id="@+id/imageButton2"
         android:layout_width="170dp"
         android:layout_height="170dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginLeft="26dp"
+        android:layout_marginTop="37dp"
+        android:background="#DBD9DC"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/studio"
-        tools:layout_editor_absoluteX="26dp"
-        tools:layout_editor_absoluteY="191dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:srcCompat="@drawable/studio" />
 
     <ImageButton
         android:id="@+id/imageButton3"
         android:layout_width="170dp"
         android:layout_height="170dp"
+        android:layout_marginTop="37dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginRight="26dp"
+        android:background="#DBD9DC"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/planification"
-        tools:layout_editor_absoluteX="221dp"
-        tools:layout_editor_absoluteY="191dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:srcCompat="@drawable/planification" />
 
     <TextView
         android:id="@+id/textView5"
@@ -65,9 +78,11 @@
         android:layout_marginStart="68dp"
         android:layout_marginLeft="68dp"
         android:layout_marginTop="8dp"
+        android:layout_marginBottom="12dp"
         android:text="STUDIOS"
         android:textColor="#000000"
         android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/imageButton6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageButton2" />
 
@@ -78,22 +93,82 @@
         android:layout_marginStart="68dp"
         android:layout_marginLeft="68dp"
         android:layout_marginTop="8dp"
+        android:layout_marginBottom="12dp"
         android:text="CELLULES"
         android:textColor="#000000"
         android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/imageButton8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageButton6" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="68dp"
+        android:layout_marginLeft="68dp"
+        android:layout_marginTop="8dp"
+        android:text="SERVEUR"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton8" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="68dp"
+        android:layout_marginLeft="68dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="20dp"
+        android:text="MAGASIN"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginRight="64dp"
+        android:text="REFORMER"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginBottom="20dp"
+        android:text="AJOUTER MEMBRE"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginRight="44dp"
         android:text="MAINTENANCE"
         android:textColor="#000000"
         android:textSize="18sp"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton7"
-        tools:layout_editor_absoluteX="242dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton7" />
 
     <TextView
         android:id="@+id/textView7"
@@ -102,9 +177,11 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="44dp"
         android:layout_marginRight="44dp"
+        android:layout_marginBottom="12dp"
         android:text="PLANIFICATION"
         android:textColor="#000000"
         android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/imageButton7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageButton3" />
 
@@ -112,18 +189,76 @@
         android:id="@+id/imageButton6"
         android:layout_width="170dp"
         android:layout_height="170dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginLeft="26dp"
+        android:layout_marginTop="12dp"
+        android:background="#DBD9DC"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/cellule"
-        tools:layout_editor_absoluteX="26dp"
-        tools:layout_editor_absoluteY="406dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:srcCompat="@drawable/cellule" />
 
     <ImageButton
         android:id="@+id/imageButton7"
         android:layout_width="170dp"
         android:layout_height="170dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginRight="26dp"
+        android:background="#DBD9DC"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/maintenance"
-        tools:layout_editor_absoluteX="221dp"
-        tools:layout_editor_absoluteY="406dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7"
+        app:srcCompat="@drawable/maintenance" />
 
+    <ImageButton
+        android:id="@+id/imageButton8"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginLeft="26dp"
+        android:layout_marginTop="12dp"
+        android:background="#DBD9DC"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:srcCompat="@drawable/serveur" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginRight="26dp"
+        android:background="#FFDBD9DC"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        app:srcCompat="@drawable/reformer" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginLeft="26dp"
+        android:layout_marginTop="12dp"
+        android:background="#FFDBD9DC"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView9"
+        app:srcCompat="@drawable/magasin" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginRight="26dp"
+        android:background="#FFDBD9DC"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView10"
+        app:srcCompat="@drawable/membre" />
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
