@@ -9,6 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RadioMonastir">
+        <activity android:name=".AjouterMembreActivity"></activity>
+        <activity android:name=".MagasinActivity" />
+        <activity android:name=".ReformerActivity" />
+        <activity android:name=".ServeurActivity" />
+        <activity android:name=".MaintenanceActivity" />
+        <activity android:name=".CelluleActivity" />
+        <activity android:name=".PlanificationActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -16,12 +23,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ListActivity" />
+        <activity android:name=".ListStudioActivity" />
         <activity android:name=".HomeActivity" />
         <activity android:name=".SignUpActivity" />
-        <activity android:name=".SignInActivity">
-
-        </activity>
+        <activity android:name=".SignInActivity" />
     </application>
 
 </manifest>
