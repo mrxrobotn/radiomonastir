@@ -54,6 +54,7 @@
         android:layout_marginTop="37dp"
         android:background="#DBD9DC"
         android:scaleType="fitXY"
+        android:onClick="affichestudio"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
         app:srcCompat="@drawable/studio" />
@@ -67,6 +68,7 @@
         android:layout_marginRight="26dp"
         android:background="#DBD9DC"
         android:scaleType="fitXY"
+        android:onClick="afficheplanification"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
         app:srcCompat="@drawable/planification" />
@@ -194,6 +196,7 @@
         android:layout_marginTop="12dp"
         android:background="#DBD9DC"
         android:scaleType="fitXY"
+        android:onClick="affichecellule"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5"
         app:srcCompat="@drawable/cellule" />
@@ -207,6 +210,7 @@
         android:layout_marginRight="26dp"
         android:background="#DBD9DC"
         android:scaleType="fitXY"
+        android:onClick="affichemaintenance"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7"
         app:srcCompat="@drawable/maintenance" />
@@ -220,11 +224,12 @@
         android:layout_marginTop="12dp"
         android:background="#DBD9DC"
         android:scaleType="fitXY"
+        android:onClick="afficheserveur"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6"
         app:srcCompat="@drawable/serveur" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/imageView4"
         android:layout_width="170dp"
         android:layout_height="170dp"
@@ -233,11 +238,12 @@
         android:layout_marginRight="26dp"
         android:background="#FFDBD9DC"
         android:scaleType="fitXY"
+        android:onClick="affichereformer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8"
         app:srcCompat="@drawable/reformer" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/imageView5"
         android:layout_width="170dp"
         android:layout_height="170dp"
@@ -245,11 +251,13 @@
         android:layout_marginLeft="26dp"
         android:layout_marginTop="12dp"
         android:background="#FFDBD9DC"
+        android:scaleType="fitXY"
+        android:onClick="affichemagasin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9"
         app:srcCompat="@drawable/magasin" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/imageView6"
         android:layout_width="170dp"
         android:layout_height="170dp"
@@ -257,6 +265,8 @@
         android:layout_marginEnd="26dp"
         android:layout_marginRight="26dp"
         android:background="#FFDBD9DC"
+        android:scaleType="fitXY"
+        android:onClick="afficheajoutermemebre"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10"
         app:srcCompat="@drawable/membre" />
