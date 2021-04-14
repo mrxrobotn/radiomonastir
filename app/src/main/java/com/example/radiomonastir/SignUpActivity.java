@@ -38,19 +38,19 @@ public class SignUpActivity extends AppCompatActivity {
         else if (champ_email.getText().toString().isEmpty()){
             Toast.makeText(SignUpActivity.this,"Le champ email est vide",Toast.LENGTH_LONG).show();
         }
-        else if (champ_email.getText().toString().isEmpty()){
+        else if (champ_password.getText().toString().isEmpty()){
             Toast.makeText(SignUpActivity.this,"Entrer un mot de passe",Toast.LENGTH_LONG).show();
         }
         else if (champ_confirmpassword.getText().toString().isEmpty()){
             Toast.makeText(SignUpActivity.this,"Champ confirmer est obligatoire",Toast.LENGTH_LONG).show();
         }
         else {
-            mAuth.createUserWithEmailAndPassword(champ_email.getText().toString(), champ_email.getText().toString())
+            mAuth.createUserWithEmailAndPassword(champ_email.getText().toString(), champ_password.getText().toString())
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-                                Intent intent = new Intent(SignUpActivity.this, ListStudioActivity.class);
+                                Intent intent = new Intent(SignUpActivity.this, HomeAdminActivity.class);
                                 startActivity(intent);
                                 // Sign in success, update UI with the signed-in user's information
 

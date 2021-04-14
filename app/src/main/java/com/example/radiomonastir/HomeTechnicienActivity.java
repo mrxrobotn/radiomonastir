@@ -4,11 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class AjouterMembreActivity extends AppCompatActivity {
+public class HomeTechnicienActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ajouter_membre);
+        setContentView(R.layout.activity_home_technicien);
     }
 }

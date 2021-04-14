@@ -6,19 +6,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeAdminActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_home_admin);
     }
 
     public void affichestudio(View view) {
         findViewById(R.id.imageButton2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, ListStudioActivity.class);
+                Intent intent = new Intent(HomeAdminActivity.this, ListStudioActivity.class);
                 startActivity(intent);
             }
         });
@@ -28,7 +28,7 @@ public class HomeActivity extends AppCompatActivity {
         findViewById(R.id.imageButton3).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, PlanificationActivity.class);
+                Intent intent = new Intent(HomeAdminActivity.this, PlanificationActivity.class);
                 startActivity(intent);
             }
         });
@@ -38,7 +38,7 @@ public class HomeActivity extends AppCompatActivity {
         findViewById(R.id.imageButton6).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, CelluleActivity.class);
+                Intent intent = new Intent(HomeAdminActivity.this, CelluleActivity.class);
                 startActivity(intent);
             }
         });
@@ -48,7 +48,7 @@ public class HomeActivity extends AppCompatActivity {
         findViewById(R.id.imageButton7).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, MaintenanceActivity.class);
+                Intent intent = new Intent(HomeAdminActivity.this, MaintenanceActivity.class);
                 startActivity(intent);
             }
         });
@@ -58,7 +58,7 @@ public class HomeActivity extends AppCompatActivity {
         findViewById(R.id.imageButton8).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, ServeurActivity.class);
+                Intent intent = new Intent(HomeAdminActivity.this, ServeurActivity.class);
                 startActivity(intent);
             }
         });
@@ -68,7 +68,7 @@ public class HomeActivity extends AppCompatActivity {
         findViewById(R.id.imageView4).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, ReformerActivity.class);
+                Intent intent = new Intent(HomeAdminActivity.this, ReformerActivity.class);
                 startActivity(intent);
             }
         });
@@ -78,7 +78,7 @@ public class HomeActivity extends AppCompatActivity {
         findViewById(R.id.imageView5).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, MagasinActivity.class);
+                Intent intent = new Intent(HomeAdminActivity.this, MagasinActivity.class);
                 startActivity(intent);
             }
         });
@@ -88,7 +88,7 @@ public class HomeActivity extends AppCompatActivity {
         findViewById(R.id.imageView6).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, AjouterMembreActivity.class);
+                Intent intent = new Intent(HomeAdminActivity.this, SignUpActivity.class);
                 startActivity(intent);
             }
         });
