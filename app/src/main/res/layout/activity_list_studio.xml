@@ -3,15 +3,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.listviewaddelementsdynamically_android_examples
-    .com.MainActivity">
+    tools:context="com.example.radiomonastir.ListStudioActivity">
 
     <Button
         android:id="@+id/button1"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
+        android:layout_width="230dp"
+        android:layout_height="56dp"
         android:layout_below="@+id/editText1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+
+        android:layout_marginLeft="90dp"
+        android:layout_marginTop="79dp"
+        android:layout_marginRight="91dp"
+        android:layout_marginBottom="596dp"
         android:background="#009688"
         android:text="Ajouter"
         app:backgroundTintMode="screen" />
@@ -20,7 +28,7 @@
         android:id="@+id/editText1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+
         android:layout_centerHorizontal="true"
         android:layout_marginTop="26dp"
         android:ems="10"
@@ -30,8 +38,13 @@
     <ListView
         android:id="@+id/listView1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="537dp"
         android:layout_below="@+id/button1"
-        android:layout_centerHorizontal="true"></ListView>
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="179dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginBottom="14dp"></ListView>
 
 </RelativeLayout>
