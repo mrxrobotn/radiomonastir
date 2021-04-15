@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "895758726528",
-    "project_id": "radiomonastir-b3e87",
-    "storage_bucket": "radiomonastir-b3e87.appspot.com"
+    "project_number": "1083960410377",
+    "project_id": "radiomonastir-55b1f",
+    "storage_bucket": "radiomonastir-55b1f.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:895758726528:android:33c9047b6894bfa4913d65",
+        "mobilesdk_app_id": "1:1083960410377:android:3a17f867aa6fcaf35413d8",
         "android_client_info": {
           "package_name": "com.example.radiomonastir"
         }
       },
       "oauth_client": [
         {
-          "client_id": "895758726528-ov9aduhbj88lvpuc61us668ubpri10b3.apps.googleusercontent.com",
+          "client_id": "1083960410377-g4993v0bfmgjsm6tin67cg5ffpokgrmm.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDmVdLxJKJ17nHGqsgsrHP0FkhxaSgx5jQ"
+          "current_key": "AIzaSyBG6ZdlWLSyxWnNLdlS0UbRrfuSR8zNCVw"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "895758726528-ov9aduhbj88lvpuc61us668ubpri10b3.apps.googleusercontent.com",
+              "client_id": "1083960410377-g4993v0bfmgjsm6tin67cg5ffpokgrmm.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
