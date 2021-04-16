@@ -41,8 +41,8 @@ public class SignUpActivity extends AppCompatActivity {
         else if (champ_password.getText().toString().isEmpty()){
             Toast.makeText(SignUpActivity.this,"Entrer un mot de passe",Toast.LENGTH_LONG).show();
         }
-        else if (champ_confirmpassword.getText().toString().isEmpty()){
-            Toast.makeText(SignUpActivity.this,"Champ confirmer est obligatoire",Toast.LENGTH_LONG).show();
+        else if (champ_confirmpassword.getText().toString().equals(champ_password.getText().toString())){
+            Toast.makeText(SignUpActivity.this,"mot de passe ne correspond pas",Toast.LENGTH_LONG).show();
         }
         else {
             mAuth.createUserWithEmailAndPassword(champ_email.getText().toString(), champ_password.getText().toString())
@@ -56,7 +56,8 @@ public class SignUpActivity extends AppCompatActivity {
 
                                 FirebaseUser user = mAuth.getCurrentUser();
 
-                            } else {
+                            }
+                            else {
                                 // If sign in fails, display a message to the user.
 
                                 Toast.makeText(SignUpActivity.this, "Authentication failed."+task.getException(),

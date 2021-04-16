@@ -4,7 +4,6 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
@@ -14,25 +13,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RadioMonastir">
-        <activity android:name=".HomeTechnicienActivity"/>
+        <activity android:name=".studio.StudioActivity"></activity>
+        <activity android:name=".HomeTechnicienActivity" />
         <activity android:name=".MagasinActivity" />
         <activity android:name=".ReformerActivity" />
         <activity android:name=".ServeurActivity" />
         <activity android:name=".MaintenanceActivity" />
         <activity android:name=".CelluleActivity" />
         <activity android:name=".PlanificationActivity" />
-        <activity android:name=".studio.MainActivity" />
         <activity android:name=".HomeAdminActivity" />
-        <activity android:name=".SignUpActivity" >
-
-        </activity>
+        <activity android:name=".SignUpActivity"></activity>
         <activity android:name=".SignInActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
     </application>
 

@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.radiomonastir.studio.MainActivity;
+import com.example.radiomonastir.studio.StudioActivity;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -23,7 +23,7 @@ public class HomeAdminActivity extends AppCompatActivity {
         findViewById(R.id.imageButton2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeAdminActivity.this, MainActivity.class);
+                Intent intent = new Intent(HomeAdminActivity.this, StudioActivity.class);
                 startActivity(intent);
             }
         });
