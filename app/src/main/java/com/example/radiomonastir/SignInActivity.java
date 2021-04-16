@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -64,10 +65,16 @@ public class SignInActivity extends AppCompatActivity {
                             }
                         }
                     });
-
-
-
         }
     }
 
+    public void forgetpassword(View view) {
+        findViewById(R.id.textViewForgetPassword).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SignInActivity.this, ForgetPasswordActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
 }
