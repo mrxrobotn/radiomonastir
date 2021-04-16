@@ -3,6 +3,7 @@ package com.example.radiomonastir;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -43,7 +44,7 @@ public class SignInActivity extends AppCompatActivity {
         }
         else {
 
-            mAuth.createUserWithEmailAndPassword(champ_email.getText().toString(), champ_password.getText().toString())
+            mAuth.signInWithEmailAndPassword(champ_email.getText().toString(), champ_password.getText().toString())
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
@@ -51,24 +52,19 @@ public class SignInActivity extends AppCompatActivity {
                                 // Sign in success, update UI with the signed-in user's information
 
                                 FirebaseUser user = mAuth.getCurrentUser();
+
                             } else {
                                 // If sign in fails, display a message to the user.
 
-                                Toast.makeText(SignInActivity.this, "Authentication failed.",
+                                Toast.makeText(SignInActivity.this, "Authentication failed." + task.getException(),
                                         Toast.LENGTH_SHORT).show();
+
                             }
                         }
                     });
 
 
 
-            findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(SignInActivity.this, HomeAdminActivity.class);
-                    startActivity(intent);
-                }
-            });
         }
     }
 
