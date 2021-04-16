@@ -25,15 +25,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/spinnerName"
-        android:text="Add" />
+        android:text="Ajouter" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/buttonAddStudio"
-        android:text="Artists"
         android:gravity="center"
+        android:text="Studios"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
     <TextView
@@ -41,13 +41,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/textView"
-        android:text="Tap on an Artist to add and view tracks"
-        android:gravity="center" />
+        android:gravity="center"
+        android:text="Appuyer sur un studio pour afficher plus de détails" />
 
     <ListView
         android:id="@+id/listViewStudios"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"></ListView>
+        android:layout_height="548dp"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="17dp"></ListView>
 
 </RelativeLayout>
