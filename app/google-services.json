@@ -1,13 +1,14 @@
 {
   "project_info": {
     "project_number": "1083960410377",
+    "firebase_url": "https://radiomonastir-55b1f-default-rtdb.firebaseio.com",
     "project_id": "radiomonastir-55b1f",
     "storage_bucket": "radiomonastir-55b1f.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1083960410377:android:3a17f867aa6fcaf35413d8",
+        "mobilesdk_app_id": "1:1083960410377:android:8b32bfbcd736de245413d8",
         "android_client_info": {
           "package_name": "com.example.radiomonastir"
         }
