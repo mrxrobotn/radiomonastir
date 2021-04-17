@@ -47,6 +47,8 @@ public class StudioActivity extends AppCompatActivity {
         listViewStudios = (ListView) findViewById(R.id.listViewStudios);
         buttonAddStudio = (Button) findViewById(R.id.buttonAddStudio);
 
+        //list to store artists
+        studios = new ArrayList<>();
 
         //adding an onclicklistener to button
         buttonAddStudio.setOnClickListener(new View.OnClickListener() {
@@ -67,7 +69,7 @@ public class StudioActivity extends AppCompatActivity {
         String name = spinnerName.getSelectedItem().toString();
 
         //checking if the value is provided
-        if (!TextUtils.isEmpty(name)) {
+        if (!TextUtils.isEmpty(number)) {
 
             //getting a unique id using push().getKey() method
             //it will create a unique id and we will use it as the Primary Key for our Artist

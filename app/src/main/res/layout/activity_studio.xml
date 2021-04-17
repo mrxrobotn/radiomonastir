@@ -11,6 +11,7 @@
         android:id="@+id/editTextNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="15dp"
         android:hint="Enter name" />
 
     <Spinner
@@ -18,6 +19,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/editTextNumber"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
         android:entries="@array/NomStodio"></Spinner>
 
     <Button
@@ -25,6 +28,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/spinnerName"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
         android:text="Ajouter" />
 
     <TextView
@@ -42,6 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/textView"
         android:gravity="center"
+        android:layout_marginBottom="5dp"
         android:text="Appuyer sur un studio pour afficher plus de détails" />
 
     <ListView
@@ -49,6 +57,7 @@
         android:layout_width="match_parent"
         android:layout_height="548dp"
         android:layout_below="@+id/textView1"
+        android:layout_margin="5dp"
         android:layout_marginTop="17dp"></ListView>
 
 </RelativeLayout>

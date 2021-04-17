@@ -13,7 +13,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RadioMonastir">
-        <activity android:name=".ForgetPasswordActivity"></activity>
+        <activity android:name=".StartActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ForgetPasswordActivity" />
         <activity android:name=".studio.StudioActivity" />
         <activity android:name=".HomeTechnicienActivity" />
         <activity android:name=".MagasinActivity" />
@@ -24,13 +31,7 @@
         <activity android:name=".PlanificationActivity" />
         <activity android:name=".HomeAdminActivity" />
         <activity android:name=".SignUpActivity" />
-        <activity android:name=".SignInActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".SignInActivity"/>
     </application>
 
 </manifest>

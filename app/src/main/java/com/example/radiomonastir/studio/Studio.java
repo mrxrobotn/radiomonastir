@@ -7,7 +7,7 @@ public class Studio {
     private String studioNumber;
     private String studioName;
 
-    public Studio(){
+    public Studio() {
         //this constructor is required
     }
 
