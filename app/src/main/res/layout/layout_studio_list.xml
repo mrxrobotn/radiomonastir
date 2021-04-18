@@ -4,18 +4,18 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:text="Atif Aslam"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
         android:id="@+id/textViewNumber"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="N°Studio"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
     <TextView
-        android:text="Rock"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
         android:id="@+id/textViewName"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="Nom Studio"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
 
 
 </LinearLayout>
