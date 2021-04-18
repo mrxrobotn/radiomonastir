@@ -2,18 +2,21 @@ package com.example.radiomonastir.studio;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ArrayAdapter;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.radiomonastir.R;
+import com.example.radiomonastir.studio.equipement.EquipementActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,6 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StudioActivity extends AppCompatActivity {
+
 
     EditText editTextNumber;
     Spinner spinnerName;
@@ -63,10 +67,80 @@ public class StudioActivity extends AppCompatActivity {
                 addStudio();
             }
         });
+
+        //adding an onitemlongclicklistener to listView items
+        listViewStudios.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Studio studio = studios.get(i);
+                showUpdateDeleteDialog(studio.getStudioId(), studio.getStudioNumber());
+                return true;
+            }
+        });
+
     }
 
 
+/*--------------------------------------------methods-----------------------------------------------*/
 
+    private void showUpdateDeleteDialog(final String studioId, String studioNumber) {
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.studio_dialogue, null);
+        dialogBuilder.setView(dialogView);
+
+        final EditText editTextNumber = (EditText) dialogView.findViewById(R.id.editTextNumber);
+        final Spinner spinnerName = (Spinner) dialogView.findViewById(R.id.spinnerName);
+        final Button buttonUpdate = (Button) dialogView.findViewById(R.id.buttonUpdateStudio);
+        final Button buttonDelete = (Button) dialogView.findViewById(R.id.buttonDeleteStudio);
+
+        dialogBuilder.setTitle(studioNumber);
+        final AlertDialog b = dialogBuilder.create();
+        b.show();
+
+        buttonUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String number = editTextNumber.getText().toString().trim();
+                String name = spinnerName.getSelectedItem().toString();
+                if (!TextUtils.isEmpty(number)) {
+                    updateStudio(studioId, number, name);
+                    b.dismiss();
+                }
+            }
+        });
+
+
+        buttonDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                deleteStudio(studioId);
+                b.dismiss();
+            }
+        });
+    }
+
+    private boolean updateStudio(String id, String number, String name) {
+        //getting the specified artist reference
+        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("studios").child(id);
+
+        //updating artist
+        Studio studio = new Studio(id, number, name);
+        dR.setValue(studio);
+        Toast.makeText(getApplicationContext(), "Studio modifié avec succée", Toast.LENGTH_LONG).show();
+        return true;
+    }
+
+    private boolean deleteStudio(String id) {
+        //getting the specified artist reference
+        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("studios").child(id);
+
+        //removing artist
+        dR.removeValue();
+        Toast.makeText(getApplicationContext(), "Studio supprimé avec succée", Toast.LENGTH_LONG).show();
+        return true;
+    }
 
 
 
@@ -105,6 +179,8 @@ public class StudioActivity extends AppCompatActivity {
         });
     }
 
+
+
     /*
      * This method is saving a new artist to the
      * Firebase Realtime Database
@@ -122,7 +198,7 @@ public class StudioActivity extends AppCompatActivity {
             String id = databaseStudios.push().getKey();
 
             //creating an Artist Object
-            Studio studio = new Studio(number, name);
+            Studio studio = new Studio(id, number, name);
 
             //Saving the Artist
             databaseStudios.child(id).setValue(studio);
@@ -138,8 +214,4 @@ public class StudioActivity extends AppCompatActivity {
             Toast.makeText(this, "Entrer un numero", Toast.LENGTH_LONG).show();
         }
     }
-
-
-
-
 }
