@@ -41,7 +41,7 @@ public class SignUpActivity extends AppCompatActivity {
         else if (champ_password.getText().toString().isEmpty()){
             Toast.makeText(SignUpActivity.this,"Entrer un mot de passe",Toast.LENGTH_LONG).show();
         }
-        else if (champ_confirmpassword.getText().toString().equals(champ_password.getText().toString())){
+        else if (!champ_password.getText().toString().equals(champ_confirmpassword.getText().toString())){
             Toast.makeText(SignUpActivity.this,"mot de passe ne correspond pas",Toast.LENGTH_LONG).show();
         }
         else {
