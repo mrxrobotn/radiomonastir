@@ -5,7 +5,7 @@
     android:id="@+id/activity_equipement"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".studio.equipement.EquipementActivity">
+    tools:context=".Adapters.StudioList">
 
     <TextView
         android:id="@+id/textView14"

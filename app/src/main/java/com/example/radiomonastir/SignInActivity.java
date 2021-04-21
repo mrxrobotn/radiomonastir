@@ -44,29 +44,38 @@ public class SignInActivity extends AppCompatActivity {
             Toast.makeText(SignInActivity.this,"Inserer votre mot de passe",Toast.LENGTH_LONG).show();
         }
         else {
+            if (champ_email.getText().toString().equals("admin@radiomonastir.tn") ) {
+                Intent intent = new Intent(SignInActivity.this, HomeAdminActivity.class);
+                startActivity(intent);
+            }
+            else {
+                mAuth.signInWithEmailAndPassword(champ_email.getText().toString(), champ_password.getText().toString())
+                        .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    // Sign in success, update UI with the signed-in user's information
 
-            mAuth.signInWithEmailAndPassword(champ_email.getText().toString(), champ_password.getText().toString())
-                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                // Sign in success, update UI with the signed-in user's information
+                                    FirebaseUser user = mAuth.getCurrentUser();
+                                    Intent intent = new Intent(SignInActivity.this, HomeTechnicienActivity.class);
+                                    startActivity(intent);
+                                } else {
+                                    // If sign in fails, display a message to the user.
 
-                                FirebaseUser user = mAuth.getCurrentUser();
-                                Intent intent = new Intent(SignInActivity.this, HomeAdminActivity.class);
-                                startActivity(intent);
+                                    Toast.makeText(SignInActivity.this, "Authentication failed." + task.getException(),
+                                            Toast.LENGTH_SHORT).show();
+
+                                }
                             }
-                            else {
-                                // If sign in fails, display a message to the user.
-
-                                Toast.makeText(SignInActivity.this, "Authentication failed." + task.getException(),
-                                        Toast.LENGTH_SHORT).show();
-
-                            }
-                        }
-                    });
+                        });
+            }
         }
     }
+
+
+
+
+
 
     public void forgetpassword(View view) {
         findViewById(R.id.textViewForgetPassword).setOnClickListener(new View.OnClickListener() {
