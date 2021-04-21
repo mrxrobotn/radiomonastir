@@ -30,7 +30,8 @@ public class CelluleActivity extends AppCompatActivity {
     Button btnAjouter,btnModifier;
     RecyclerView recyclerView;
 
-    List<Cellule> celluleList;
+    List<Cellule> celluleList =new ArrayList<>();
+
 
 
     DatabaseReference myRef;
@@ -52,8 +53,6 @@ public class CelluleActivity extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         myRef= database.getReference("cellules");
 
-        final List<Cellule> celluleList = new ArrayList<>();
-
         btnAjouter.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -71,13 +70,12 @@ public class CelluleActivity extends AppCompatActivity {
             }
         });
     }
-    @Override
+   @Override
     protected void onStart() {
         super.onStart();
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                celluleList.clear();
                 for (DataSnapshot postSnapshot : snapshot.getChildren()) {
                     Cellule cellule = postSnapshot.getValue(Cellule.class);
                     celluleList.add(cellule);
