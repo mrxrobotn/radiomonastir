@@ -13,6 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RadioMonastir">
+        <activity android:name=".listecellule"></activity>
         <activity android:name=".StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,7 +32,7 @@
         <activity android:name=".PlanificationActivity" />
         <activity android:name=".HomeAdminActivity" />
         <activity android:name=".SignUpActivity" />
-        <activity android:name=".SignInActivity"/>
+        <activity android:name=".SignInActivity" />
     </application>
 
 </manifest>
