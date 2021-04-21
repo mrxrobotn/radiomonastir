@@ -1,4 +1,4 @@
-package com.example.radiomonastir.studio;
+package com.example.radiomonastir.Adapters;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,9 +9,9 @@ import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.radiomonastir.HomeAdminActivity;
-import com.example.radiomonastir.PlanificationActivity;
+import com.example.radiomonastir.Models.Studio;
 import com.example.radiomonastir.R;
+import com.example.radiomonastir.StudioEquipementActivity;
 
 import java.util.List;
 
@@ -38,7 +38,7 @@ public class StudioList extends ArrayAdapter<Studio> {
         listeitem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context , PlanificationActivity.class);
+                Intent intent = new Intent(context , StudioEquipementActivity.class);
                 context.startActivity(intent);
             }
         });

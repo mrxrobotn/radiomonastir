@@ -13,7 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RadioMonastir">
-        <activity android:name=".listecellule"></activity>
+        <activity android:name=".cellule.CelluleList"></activity>
         <activity android:name=".StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,13 +22,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".ForgetPasswordActivity" />
-        <activity android:name=".studio.StudioActivity" />
+        <activity android:name=".StudioActivity" />
         <activity android:name=".HomeTechnicienActivity" />
         <activity android:name=".MagasinActivity" />
         <activity android:name=".ReformerActivity" />
         <activity android:name=".ServeurActivity" />
         <activity android:name=".MaintenanceActivity" />
-        <activity android:name=".CelluleActivity" />
+        <activity android:name=".cellule.CelluleActivity" />
         <activity android:name=".PlanificationActivity" />
         <activity android:name=".HomeAdminActivity" />
         <activity android:name=".SignUpActivity" />

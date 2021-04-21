@@ -1,9 +1,8 @@
-package com.example.radiomonastir.studio;
+package com.example.radiomonastir;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -15,8 +14,8 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.radiomonastir.R;
-import com.example.radiomonastir.studio.equipement.EquipementActivity;
+import com.example.radiomonastir.Models.Studio;
+import com.example.radiomonastir.Adapters.StudioList;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -38,7 +37,7 @@ public class StudioActivity extends AppCompatActivity {
     List<Studio> studios;
 
     //our database reference object
-    DatabaseReference databaseStudios;
+    DatabaseReference myRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +45,7 @@ public class StudioActivity extends AppCompatActivity {
         setContentView(R.layout.activity_studio);
 
         //getting the reference of artists node
-        databaseStudios = FirebaseDatabase.getInstance().getReference("studios");
+        myRef = FirebaseDatabase.getInstance().getReference("studios");
 
         //getting views
         editTextNumber = (EditText) findViewById(R.id.editTextNumber);
@@ -56,6 +55,7 @@ public class StudioActivity extends AppCompatActivity {
 
         //list to store artists
         studios = new ArrayList<>();
+
 
         //adding an onclicklistener to button
         buttonAddStudio.setOnClickListener(new View.OnClickListener() {
@@ -77,7 +77,6 @@ public class StudioActivity extends AppCompatActivity {
                 return true;
             }
         });
-
     }
 
 
@@ -151,7 +150,7 @@ public class StudioActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         //attaching value event listener
-        databaseStudios.addValueEventListener(new ValueEventListener() {
+        myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
@@ -195,13 +194,13 @@ public class StudioActivity extends AppCompatActivity {
 
             //getting a unique id using push().getKey() method
             //it will create a unique id and we will use it as the Primary Key for our Artist
-            String id = databaseStudios.push().getKey();
+            String id = myRef.push().getKey();
 
             //creating an Artist Object
             Studio studio = new Studio(id, number, name);
 
             //Saving the Artist
-            databaseStudios.child(id).setValue(studio);
+            myRef.child(id).setValue(studio);
 
             //setting edittext to blank again
             editTextNumber.setText("");

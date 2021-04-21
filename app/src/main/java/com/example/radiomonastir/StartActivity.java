@@ -6,12 +6,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-public class StartActivity extends AppCompatActivity {
+import com.google.firebase.analytics.FirebaseAnalytics;
 
+public class StartActivity extends AppCompatActivity {
+    private FirebaseAnalytics mFirebaseAnalytics;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
+
+        //Firebase Analytics
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         new Handler().postDelayed(new Runnable() {
             @Override

@@ -1,4 +1,4 @@
-package com.example.radiomonastir.studio;
+package com.example.radiomonastir.Models;
 
 import com.google.firebase.database.IgnoreExtraProperties;
 
