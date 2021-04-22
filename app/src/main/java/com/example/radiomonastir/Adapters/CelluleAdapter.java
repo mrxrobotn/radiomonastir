@@ -38,11 +38,11 @@ public class CelluleAdapter extends RecyclerView.Adapter<CelluleViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull CelluleViewHolder celluleViewHolder, final int i) {
         Cellule cellule = celluleList.get(i);
-        celluleViewHolder.itemNomCellule.setText(cellule.getNomCellule());
+        celluleViewHolder.itemNomCellule.setText(cellule.getCelluleId());
         celluleViewHolder.item_cellule.setOnClickListener((view) -> {
             Intent intent = new Intent(view.getContext(), CelluleEquipementActivity.class);
-            intent.putExtra("id",cellule.getId());
-            intent.putExtra("nom",cellule.getNomCellule());
+            intent.putExtra("id",cellule.getCelluleId());
+            intent.putExtra("nom",cellule.getCelluleName());
             context.startActivity(intent);
 
         });

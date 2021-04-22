@@ -1,31 +1,30 @@
 package com.example.radiomonastir.Models;
 
 public class Cellule {
-    private String id;
-    private String nomCellule;
-
-
-    public Cellule(String id, String nomCellule) {
-        this.nomCellule = nomCellule;
-        this.id = id;
-    }
+    private String celluleId;
+    private String celluleName;
 
     public Cellule() {
     }
 
-    public String getNomCellule() {
-        return nomCellule;
+    public Cellule(String celluleId, String celluleName) {
+        this.celluleId = celluleId;
+        this.celluleName = celluleName;
     }
 
-    public void setNomCellule(String nomCellule) {
-        this.nomCellule = nomCellule;
+    public String getCelluleId() {
+        return celluleId;
     }
 
-    public String getId() {
-        return id;
+    public void setCelluleId(String celluleId) {
+        this.celluleId = celluleId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public String getCelluleName() {
+        return celluleName;
+    }
+
+    public void setCelluleName(String celluleName) {
+        this.celluleName = celluleName;
     }
 }

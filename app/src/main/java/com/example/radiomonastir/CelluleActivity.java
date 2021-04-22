@@ -2,11 +2,15 @@ package com.example.radiomonastir;
 
 
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -16,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.radiomonastir.Adapters.CelluleAdapter;
 import com.example.radiomonastir.Models.Cellule;
+import com.example.radiomonastir.Models.Studio;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -43,7 +48,6 @@ public class CelluleActivity extends AppCompatActivity {
 
         editTextTextPersonName=(EditText)findViewById(R.id.editTextTextPersonName);
         btnAjouter=(Button)findViewById(R.id.btnAjouter);
-        btnModifier=(Button)findViewById(R.id.btnModifier);
         recyclerView=(RecyclerView)findViewById(R.id.recyclerView);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
@@ -69,8 +73,22 @@ public class CelluleActivity extends AppCompatActivity {
                 }
             }
         });
+
+
+       /* recyclerView.setOnLongClickListener(new AdapterView.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Cellule cellule = celluleList.get(i);
+                showUpdateDeleteDialog(cellule.getCelluleId(), cellule.getCelluleName());
+                return false;
+            }
+        });*/
+
+
     }
-   @Override
+
+
+    @Override
     protected void onStart() {
         super.onStart();
         myRef.addValueEventListener(new ValueEventListener() {
@@ -90,4 +108,60 @@ public class CelluleActivity extends AppCompatActivity {
             }
         });
     }
+
+
+    private void showUpdateDeleteDialog(String celluleId, String celluleName) {
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.cellule_dialogue, null);
+        dialogBuilder.setView(dialogView);
+
+        final EditText editTextTextPersonName = (EditText) dialogView.findViewById(R.id.editTextTextPersonName);
+        final Button buttonUpdateCellule = (Button) dialogView.findViewById(R.id.buttonUpdateCellule);
+        final Button buttonDeleteCellule = (Button) dialogView.findViewById(R.id.buttonDeleteCellule);
+
+        dialogBuilder.setTitle(celluleName);
+        final AlertDialog b = dialogBuilder.create();
+        b.show();
+
+        buttonUpdateCellule.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String name = editTextTextPersonName.getText().toString().trim();
+                if (!TextUtils.isEmpty(name)) {
+                    updateCellule(celluleId,name);
+                    b.dismiss();
+                }
+            }
+        });
+        buttonDeleteCellule.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                deleteCellule(celluleId);
+                b.dismiss();
+            }
+        });
+
+
+    }
+
+    private boolean deleteCellule(String id) {
+        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("cellules").child(id);
+
+        dR.removeValue();
+        Toast.makeText(getApplicationContext(), "Cellule supprimé avec succée", Toast.LENGTH_LONG).show();
+        return true;
+    }
+
+    private boolean updateCellule(String id, String name) {
+        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("cellules").child(id);
+
+        Cellule cellule = new Cellule(id, name);
+        dR.setValue(cellule);
+        Toast.makeText(getApplicationContext(), "Cellule modifié avec succée", Toast.LENGTH_LONG).show();
+        return true;
+    }
+
+
 }
