@@ -31,7 +31,6 @@
         <activity android:name=".ReformerActivity" />
         <activity android:name=".ServeurActivity" />
         <activity android:name=".MaintenanceActivity" />
-        <activity android:name=".cellule.CelluleActivity" />
         <activity android:name=".PlanificationActivity" />
         <activity android:name=".HomeAdminActivity" />
         <activity android:name=".SignUpActivity" />
