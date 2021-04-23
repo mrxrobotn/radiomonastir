@@ -32,7 +32,7 @@ import java.util.List;
 
 public class CelluleActivity extends AppCompatActivity {
     EditText editTextTextPersonName;
-    Button btnAjouter,btnModifier;
+    Button btnAjouter;
     RecyclerView recyclerView;
 
     List<Cellule> celluleList =new ArrayList<>();
@@ -132,8 +132,6 @@ public class CelluleActivity extends AppCompatActivity {
                 b.dismiss();
             }
         });
-
-
     }
 
     private boolean deleteCellule(String id) {

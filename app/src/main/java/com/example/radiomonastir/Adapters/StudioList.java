@@ -34,14 +34,6 @@ public class StudioList extends ArrayAdapter<Studio> {
         TextView textViewNumber = (TextView) listViewItem.findViewById(R.id.textViewNumber);
         TextView textViewName = (TextView) listViewItem.findViewById(R.id.textViewName);
 
-        LinearLayout listeitem = (LinearLayout) listViewItem.findViewById(R.id.listeitem);
-        listeitem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context , StudioEquipementActivity.class);
-                context.startActivity(intent);
-            }
-        });
         Studio studio = studios.get(position);
         textViewNumber.setText(studio.getStudioNumber());
         textViewName.setText(studio.getStudioName());
