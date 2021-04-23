@@ -74,17 +74,6 @@ public class CelluleActivity extends AppCompatActivity {
             }
         });
 
-
-       /* recyclerView.setOnLongClickListener(new AdapterView.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Cellule cellule = celluleList.get(i);
-                showUpdateDeleteDialog(cellule.getCelluleId(), cellule.getCelluleName());
-                return false;
-            }
-        });*/
-
-
     }
 
 
@@ -94,6 +83,7 @@ public class CelluleActivity extends AppCompatActivity {
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                celluleList.clear();
                 for (DataSnapshot postSnapshot : snapshot.getChildren()) {
                     Cellule cellule = postSnapshot.getValue(Cellule.class);
                     celluleList.add(cellule);

@@ -43,11 +43,9 @@ public class SignInActivity extends AppCompatActivity {
         else if (champ_password.getText().toString().isEmpty()){
             Toast.makeText(SignInActivity.this,"Inserer votre mot de passe",Toast.LENGTH_LONG).show();
         }
-        else {
-            if (champ_email.getText().toString().equals("admin@radiomonastir.tn") ) {
-                Intent intent = new Intent(SignInActivity.this, HomeAdminActivity.class);
-                startActivity(intent);
-            }
+
+
+
             else {
                 mAuth.signInWithEmailAndPassword(champ_email.getText().toString(), champ_password.getText().toString())
                         .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -57,7 +55,7 @@ public class SignInActivity extends AppCompatActivity {
                                     // Sign in success, update UI with the signed-in user's information
 
                                     FirebaseUser user = mAuth.getCurrentUser();
-                                    Intent intent = new Intent(SignInActivity.this, HomeTechnicienActivity.class);
+                                    Intent intent = new Intent(SignInActivity.this, HomeAdminActivity.class);
                                     startActivity(intent);
                                 } else {
                                     // If sign in fails, display a message to the user.
@@ -70,7 +68,7 @@ public class SignInActivity extends AppCompatActivity {
                         });
             }
         }
-    }
+
 
 
 

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -38,7 +39,7 @@ public class CelluleAdapter extends RecyclerView.Adapter<CelluleViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull CelluleViewHolder celluleViewHolder, final int i) {
         Cellule cellule = celluleList.get(i);
-        celluleViewHolder.itemNomCellule.setText(cellule.getCelluleId());
+        celluleViewHolder.itemNomCellule.setText(cellule.getCelluleName());
         celluleViewHolder.item_cellule.setOnClickListener((view) -> {
             Intent intent = new Intent(view.getContext(), CelluleEquipementActivity.class);
             intent.putExtra("id",cellule.getCelluleId());
@@ -46,6 +47,14 @@ public class CelluleAdapter extends RecyclerView.Adapter<CelluleViewHolder> {
             context.startActivity(intent);
 
         });
+        celluleViewHolder.item_cellule.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                Toast.makeText(context, "setOnLongClickListener", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        });
+
     }
 
     @Override
