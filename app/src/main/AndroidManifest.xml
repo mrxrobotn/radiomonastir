@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RadioMonastir">
-        <activity android:name=".ServeurEquipementActivity"></activity>
+        <activity android:name=".FicheIncidentActivity"></activity>
+        <activity android:name=".ServeurEquipementActivity" />
         <activity android:name=".CelluleEquipementActivity" />
         <activity android:name=".StudioEquipementActivity" />
         <activity android:name=".CelluleActivity" />
