@@ -47,7 +47,7 @@ public class CelluleAdapter extends RecyclerView.Adapter<CelluleViewHolder> {
         Cellule cellule = celluleList.get(i);
         celluleViewHolder.itemNomCellule.setText(cellule.getCelluleName());
         celluleViewHolder.item_cellule.setOnClickListener((view) -> {
-            Intent intent = new Intent(view.getContext(), CelluleEquipementActivity.class);
+            Intent intent = new Intent(context, CelluleEquipementActivity.class);
             intent.putExtra("id",cellule.getCelluleId());
             intent.putExtra("nom",cellule.getCelluleName());
             context.startActivity(intent);
