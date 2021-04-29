@@ -78,6 +78,9 @@ public class MagasinAdapter extends RecyclerView.Adapter<MagasinViewHolder> {
         final Button buttonUpdateMagasin = (Button) dialogView.findViewById(R.id.buttonUpdateMagasin);
         final Button buttonDeleteMagasin = (Button) dialogView.findViewById(R.id.buttonDeleteMagasin);
 
+        NomEquipement.setText(magasinNom);
+        TypeEquipement.setText(magasinType);
+
         dialogBuilder.setTitle(magasinNom);
         final AlertDialog b = dialogBuilder.create();
         b.show();

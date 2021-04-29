@@ -39,12 +39,14 @@ public class CelluleEquipementActivity extends AppCompatActivity {
     List<equipement_cellule> cellule_equipementlist =new ArrayList<>();
 
 
-
+    String idCell;
     DatabaseReference myRef;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cellule_equipement);
+
+         idCell = getIntent().getStringExtra("id");
 
         editText=(EditText)findViewById(R.id.editText);
         editText2=(EditText)findViewById(R.id.editText2);
@@ -59,7 +61,7 @@ public class CelluleEquipementActivity extends AppCompatActivity {
         recyclerView2.setHasFixedSize(true);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        myRef= database.getReference("equipement");
+        myRef= database.getReference("cellules/"+idCell+"/equipement");
 
         button5.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -97,7 +99,7 @@ public class CelluleEquipementActivity extends AppCompatActivity {
                     equipement_cellule cellule = postSnapshot.getValue(equipement_cellule.class);
                     cellule_equipementlist.add(cellule);
                 }
-                equipement_celluleadapter celluleAdapter = new equipement_celluleadapter(CelluleEquipementActivity.this, cellule_equipementlist);
+                equipement_celluleadapter celluleAdapter = new equipement_celluleadapter(CelluleEquipementActivity.this, cellule_equipementlist,idCell);
                 recyclerView2.setAdapter(celluleAdapter);
             }
 

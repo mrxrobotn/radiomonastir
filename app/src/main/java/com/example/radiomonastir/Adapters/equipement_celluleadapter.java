@@ -27,9 +27,11 @@ public class equipement_celluleadapter extends RecyclerView.Adapter<cellule_equi
     private Context context;
     private List<equipement_cellule>cellule_equipementlist;
 
-    public equipement_celluleadapter (Context context,List<equipement_cellule> cellules){
+    private String idCell;
+    public equipement_celluleadapter (Context context,List<equipement_cellule> cellules,String idCell){
         this.context=context;
         this.cellule_equipementlist=cellules;
+        this.idCell = idCell;
 
 
     }
@@ -90,7 +92,7 @@ public class equipement_celluleadapter extends RecyclerView.Adapter<cellule_equi
                 String type = typeequipementcellule.getText().toString().trim();
                 String numserie = serieequipementcellule.getText().toString().trim();
                 if (!TextUtils.isEmpty(nom)) {
-                    modifierequipementcellule(equipepment_celluleId,nom,type,numserie);
+                    modifierequipementcellule(idCell,equipepment_celluleId,nom,type,numserie);
                     b.dismiss();
                 }
             }
@@ -99,24 +101,24 @@ public class equipement_celluleadapter extends RecyclerView.Adapter<cellule_equi
             @Override
             public void onClick(View view) {
 
-                supprimerequipementcellule(equipepment_celluleId);
+                supprimerequipementcellule(idCell,equipepment_celluleId);
                 b.dismiss();
             }
         });
     }
 
-    private boolean supprimerequipementcellule(String id) {
-        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("cellules/equipement").child(id);
+    private boolean supprimerequipementcellule(String idCell,String idEquip) {
+        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("cellules/"+idCell+"/equipement").child(idEquip);
 
         dR.removeValue();
         Toast.makeText(context, "cellule equipement supprimé avec succée", Toast.LENGTH_LONG).show();
         return true;
     }
 
-    private boolean modifierequipementcellule(String id, String nom ,String type, String numserie) {
-        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("cellules/equipement").child(id);
+    private boolean modifierequipementcellule(String idCell,String idequip, String nom ,String type, String numserie) {
+        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("cellules/"+idCell+"/equipement").child(idequip);
 
-        equipement_cellule cellule = new equipement_cellule(id, nom,type,numserie);
+        equipement_cellule cellule = new equipement_cellule(idequip, nom,type,numserie);
         dR.setValue(cellule);
         Toast.makeText(context, "Cellule equipement modifié avec succée", Toast.LENGTH_LONG).show();
         return true;
