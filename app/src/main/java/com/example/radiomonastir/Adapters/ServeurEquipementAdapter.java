@@ -1,0 +1,118 @@
+package com.example.radiomonastir.Adapters;
+
+import android.app.AlertDialog;
+import android.content.Context;
+
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.radiomonastir.FicheIncidentActivity;
+import com.example.radiomonastir.Models.Magasin;
+import com.example.radiomonastir.Models.Serveur;
+import com.example.radiomonastir.Models.ServeurEquipement;
+import com.example.radiomonastir.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.List;
+
+public class ServeurEquipementAdapter extends RecyclerView.Adapter<ServeurEquipementViewHolder> {
+
+    private Context context;
+    private List<ServeurEquipement> serv_equip_list;
+
+    public ServeurEquipementAdapter (Context context,List<ServeurEquipement> serv_equip) {
+        this.context = context;
+        this.serv_equip_list = serv_equip;
+    }
+
+    @NonNull
+    @Override
+        public ServeurEquipementViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, final int i) {
+            View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.layout_serveur_equipement_list,viewGroup, false);
+            return new ServeurEquipementViewHolder(view);
+        }
+
+    @Override
+    public void onBindViewHolder(@NonNull ServeurEquipementViewHolder serveurEquipementViewHolder, final int i) {
+        ServeurEquipement serveurEquipement = serv_equip_list.get(i);
+        serveurEquipementViewHolder.textView22.setText(serveurEquipement.getServEquipementType());
+        serveurEquipementViewHolder.textView23.setText(serveurEquipement.getServEquipementSN());
+
+        serveurEquipementViewHolder.cl_serverequipement.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                showUpdateDeleteDialog(serveurEquipement.getServEquipementId(),serveurEquipement.getServEquipementType(),serveurEquipement.getServEquipementSN());
+                return false;
+            }
+        });
+    }
+
+
+    @Override
+    public int getItemCount() {
+        return serv_equip_list.size();
+    }
+
+    private void showUpdateDeleteDialog(String servEquipementId, String servEquipementType, String servEquipementSN) {
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        final View dialogView = inflater.inflate(R.layout.serveur_equipement_dialogue, null);
+        dialogBuilder.setView(dialogView);
+
+        final EditText editTextTextPersonName2 = (EditText) dialogView.findViewById(R.id.editTextTextPersonName2);
+        final EditText editTextTextPersonName3 = (EditText) dialogView.findViewById(R.id.editTextTextPersonName3);
+        final Button btn_modifier = (Button) dialogView.findViewById(R.id.btn_modifier);
+        final Button btn_supprimer = (Button) dialogView.findViewById(R.id.btn_supprimer);
+
+        dialogBuilder.setTitle(servEquipementType);
+        final AlertDialog b = dialogBuilder.create();
+        b.show();
+
+        btn_modifier.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String type = editTextTextPersonName2.getText().toString().trim();
+                String num_serie = editTextTextPersonName3.getText().toString().trim();
+                if (!TextUtils.isEmpty(type) && !TextUtils.isEmpty(num_serie)) {
+                    updateEquipement(servEquipementId, type, num_serie);
+                    b.dismiss();
+                }
+            }
+        });
+        btn_supprimer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                deleteEquipement(servEquipementId);
+                b.dismiss();
+            }
+        });
+    }
+
+    private boolean deleteEquipement(String servEquipementId) {
+        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("serveurs/equipements").child(servEquipementId);
+
+        dR.removeValue();
+        Toast.makeText(context, "Equipement supprimé avec succée", Toast.LENGTH_LONG).show();
+        return true;
+    }
+
+    private boolean updateEquipement(String servEquipementId, String type, String num_serie) {
+        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("serveurs/equipements").child(servEquipementId);
+
+        ServeurEquipement serveurEquipement = new ServeurEquipement(servEquipementId, type, num_serie);
+        dR.setValue(serveurEquipement);
+        Toast.makeText(context, "Equipement modifié avec succée", Toast.LENGTH_LONG).show();
+        return true;
+    }
+}
