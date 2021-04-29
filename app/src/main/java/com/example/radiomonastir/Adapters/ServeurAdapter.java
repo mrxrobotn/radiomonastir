@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.radiomonastir.CelluleEquipementActivity;
 import com.example.radiomonastir.Models.Serveur;
 import com.example.radiomonastir.R;
+import com.example.radiomonastir.ServeurEquipementActivity;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -43,7 +44,7 @@ public class ServeurAdapter extends RecyclerView.Adapter<ServeurViewHolder> {
         Serveur serveur = serveurList.get(i);
         serveurViewHolder.NomServeur.setText(serveur.getServeurName());
         serveurViewHolder.item_serveur.setOnClickListener((view) -> {
-            Intent intent = new Intent(view.getContext(), CelluleEquipementActivity.class);
+            Intent intent = new Intent(view.getContext(), ServeurEquipementActivity.class);
             intent.putExtra("id",serveur.getServeurId());
             intent.putExtra("nom",serveur.getServeurName());
             context.startActivity(intent);
