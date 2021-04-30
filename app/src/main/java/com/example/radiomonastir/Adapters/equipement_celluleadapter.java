@@ -80,7 +80,9 @@ public class equipement_celluleadapter extends RecyclerView.Adapter<cellule_equi
         final EditText serieequipementcellule = (EditText) dialogView.findViewById(R.id.serieequipementcellule);
         final Button modifierequipementcellule = (Button) dialogView.findViewById(R.id.modifierequipementcellule);
         final Button supprimerequipementcellule = (Button) dialogView.findViewById(R.id.supprimerequipementcellule);
-
+        nomequipementcellule.setText(equipepment_cellulenom);
+        typeequipementcellule.setText(equipepment_celluletype);
+        serieequipementcellule.setText(equipepment_cellulenumserie);
         dialogBuilder.setTitle(equipepment_cellulenom);
         final AlertDialog b = dialogBuilder.create();
         b.show();

@@ -32,6 +32,7 @@ public class ServeurEquipementActivity extends AppCompatActivity {
     RecyclerView Rv_ServerEquip;
 
     List<ServeurEquipement> serv_equip_list =new ArrayList<>();
+    String idserveur;
 
     DatabaseReference myRef;
 
@@ -39,6 +40,8 @@ public class ServeurEquipementActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_serveur_equipement);
+
+        idserveur = getIntent().getStringExtra("id");
 
         textView21 = (TextView) findViewById(R.id.textView21);
         editTextTextPersonName2 = (EditText) findViewById(R.id.editTextTextPersonName2);
@@ -55,7 +58,7 @@ public class ServeurEquipementActivity extends AppCompatActivity {
         Rv_ServerEquip.setLayoutManager(linearLayoutManager);
         Rv_ServerEquip.setHasFixedSize(true);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        myRef= database.getReference("serveurs/equipements");
+        myRef= database.getReference("serveurs/"+idserveur+"/equipements");
 
         button5.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -88,7 +91,7 @@ public class ServeurEquipementActivity extends AppCompatActivity {
                     ServeurEquipement serveurEquipement = postSnapshot.getValue(ServeurEquipement.class);
                     serv_equip_list.add(serveurEquipement);
                 }
-                ServeurEquipementAdapter serveurEquipementAdapter = new ServeurEquipementAdapter(ServeurEquipementActivity.this, serv_equip_list);
+                ServeurEquipementAdapter serveurEquipementAdapter = new ServeurEquipementAdapter(ServeurEquipementActivity.this, serv_equip_list,idserveur);
                 Rv_ServerEquip.setAdapter(serveurEquipementAdapter);
             }
 

@@ -29,10 +29,12 @@ public class ServeurEquipementAdapter extends RecyclerView.Adapter<ServeurEquipe
 
     private Context context;
     private List<ServeurEquipement> serv_equip_list;
+    private String idserveur;
 
-    public ServeurEquipementAdapter (Context context,List<ServeurEquipement> serv_equip) {
+    public ServeurEquipementAdapter(Context context, List<ServeurEquipement> serv_equip, String idserveur) {
         this.context = context;
         this.serv_equip_list = serv_equip;
+        this.idserveur= this.idserveur;
     }
 
     @NonNull
@@ -73,7 +75,8 @@ public class ServeurEquipementAdapter extends RecyclerView.Adapter<ServeurEquipe
         final EditText editTextTextPersonName3 = (EditText) dialogView.findViewById(R.id.editTextTextPersonName3);
         final Button btn_modifier = (Button) dialogView.findViewById(R.id.btn_modifier);
         final Button btn_supprimer = (Button) dialogView.findViewById(R.id.btn_supprimer);
-
+        editTextTextPersonName2.setText(servEquipementType);
+        editTextTextPersonName3.setText(servEquipementSN);
         dialogBuilder.setTitle(servEquipementType);
         final AlertDialog b = dialogBuilder.create();
         b.show();
@@ -84,7 +87,7 @@ public class ServeurEquipementAdapter extends RecyclerView.Adapter<ServeurEquipe
                 String type = editTextTextPersonName2.getText().toString().trim();
                 String num_serie = editTextTextPersonName3.getText().toString().trim();
                 if (!TextUtils.isEmpty(type) && !TextUtils.isEmpty(num_serie)) {
-                    updateEquipement(servEquipementId, type, num_serie);
+                    updateEquipement(idserveur,servEquipementId, type, num_serie);
                     b.dismiss();
                 }
             }
@@ -93,22 +96,22 @@ public class ServeurEquipementAdapter extends RecyclerView.Adapter<ServeurEquipe
             @Override
             public void onClick(View view) {
 
-                deleteEquipement(servEquipementId);
+                deleteEquipement(idserveur,servEquipementId);
                 b.dismiss();
             }
         });
     }
 
-    private boolean deleteEquipement(String servEquipementId) {
-        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("serveurs/equipements").child(servEquipementId);
+    private boolean deleteEquipement(String idserveur,String servEquipementId) {
+        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("serveurs/"+idserveur+"/equipements").child(servEquipementId);
 
         dR.removeValue();
         Toast.makeText(context, "Equipement supprimé avec succée", Toast.LENGTH_LONG).show();
         return true;
     }
 
-    private boolean updateEquipement(String servEquipementId, String type, String num_serie) {
-        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("serveurs/equipements").child(servEquipementId);
+    private boolean updateEquipement(String idserveur,String servEquipementId, String type, String num_serie) {
+        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("serveurs/"+idserveur+"/equipements").child(servEquipementId);
 
         ServeurEquipement serveurEquipement = new ServeurEquipement(servEquipementId, type, num_serie);
         dR.setValue(serveurEquipement);

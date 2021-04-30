@@ -77,7 +77,7 @@ public class CelluleAdapter extends RecyclerView.Adapter<CelluleViewHolder> {
         final EditText editTextTextPersonName = (EditText) dialogView.findViewById(R.id.editTextTextPersonName);
         final Button buttonUpdateCellule = (Button) dialogView.findViewById(R.id.buttonUpdateCellule);
         final Button buttonDeleteCellule = (Button) dialogView.findViewById(R.id.buttonDeleteCellule);
-
+        editTextTextPersonName.setText(celluleName);
         dialogBuilder.setTitle(celluleName);
         final AlertDialog b = dialogBuilder.create();
         b.show();

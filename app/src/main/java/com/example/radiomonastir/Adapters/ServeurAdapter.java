@@ -74,7 +74,7 @@ public class ServeurAdapter extends RecyclerView.Adapter<ServeurViewHolder> {
         final EditText editTextServeur = (EditText) dialogView.findViewById(R.id.editTextServeur);
         final Button btnModifierServeur = (Button) dialogView.findViewById(R.id.btnModifierServeur);
         final Button btnDeleteServeur = (Button) dialogView.findViewById(R.id.btnDeleteServeur);
-
+        editTextServeur.setText(serveurName);
         dialogBuilder.setTitle(serveurName);
         final AlertDialog b = dialogBuilder.create();
         b.show();

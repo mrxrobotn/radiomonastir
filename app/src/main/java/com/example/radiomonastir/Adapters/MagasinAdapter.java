@@ -80,7 +80,7 @@ public class MagasinAdapter extends RecyclerView.Adapter<MagasinViewHolder> {
 
         NomEquipement.setText(magasinNom);
         TypeEquipement.setText(magasinType);
-
+        NumSerie.setText(magasinNumSerie);
         dialogBuilder.setTitle(magasinNom);
         final AlertDialog b = dialogBuilder.create();
         b.show();
