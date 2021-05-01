@@ -15,7 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.radiomonastir.FicheIncidentActivity;
-import com.example.radiomonastir.Models.Magasin;
+import com.example.radiomonastir.Models.Equipement;
 import com.example.radiomonastir.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -25,9 +25,9 @@ import java.util.List;
 public class MagasinAdapter extends RecyclerView.Adapter<MagasinViewHolder> {
 
     private Context context;
-    private List<Magasin> magasinEquipementList;
+    private List<Equipement> magasinEquipementList;
 
-    public MagasinAdapter(Context context, List<Magasin> magasins) {
+    public MagasinAdapter(Context context, List<Equipement> magasins) {
         this.context = context;
         this.magasinEquipementList = magasins;
 
@@ -43,16 +43,16 @@ public class MagasinAdapter extends RecyclerView.Adapter<MagasinViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MagasinViewHolder magasinViewHolder, final int i) {
-        Magasin magasin = magasinEquipementList.get(i);
-        magasinViewHolder.NomEquipement.setText(magasin.getMagasinNom());
-        magasinViewHolder.TypeEquipement.setText(magasin.getMagasinType());
-        magasinViewHolder.NumSerie.setText(magasin.getMagasinNumSerie());
+        Equipement magasin = magasinEquipementList.get(i);
+        magasinViewHolder.NomEquipement.setText(magasin.getEquipementNnom());
+        magasinViewHolder.TypeEquipement.setText(magasin.getEquipementTtype());
+        magasinViewHolder.NumSerie.setText(magasin.getEquipementNumserie());
         magasinViewHolder.item_magasin.setOnClickListener((view) -> {
             Intent intent = new Intent(view.getContext(), FicheIncidentActivity.class);
-            intent.putExtra("id", magasin.getMagasinId());
-            intent.putExtra("nom", magasin.getMagasinNom());
-            intent.putExtra("type", magasin.getMagasinType());
-            intent.putExtra("numserie", magasin.getMagasinNumSerie());
+            intent.putExtra("id", magasin.getEquipepmentId());
+            intent.putExtra("nom", magasin.getEquipementNnom());
+            intent.putExtra("type", magasin.getEquipementTtype());
+            intent.putExtra("numserie", magasin.getEquipementNumserie());
             context.startActivity(intent);
 
         });
@@ -60,7 +60,7 @@ public class MagasinAdapter extends RecyclerView.Adapter<MagasinViewHolder> {
         magasinViewHolder.item_magasin.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                showUpdateDeleteDialog(magasin.getMagasinId(),magasin.getMagasinNom(),magasin.getMagasinType(),magasin.getMagasinNumSerie());
+                showUpdateDeleteDialog(magasin.getEquipepmentId(),magasin.getEquipementNnom(),magasin.getEquipementTtype(),magasin.getEquipementNumserie());
                 return false;
             }
         });
@@ -113,7 +113,7 @@ public class MagasinAdapter extends RecyclerView.Adapter<MagasinViewHolder> {
     }
 
     private boolean deleteMagasin(String id) {
-        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("magasin").child(id);
+        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("equipements").child(id);
 
         dR.removeValue();
         Toast.makeText(context, "Equipement supprimé avec succée", Toast.LENGTH_LONG).show();
@@ -121,9 +121,9 @@ public class MagasinAdapter extends RecyclerView.Adapter<MagasinViewHolder> {
     }
 
     private boolean updateMagasin(String id, String nom, String type, String numserie) {
-        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("magasin").child(id);
+        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("equipements").child(id);
 
-        Magasin magasin = new Magasin(id, nom, type,numserie);
+        Equipement magasin = new Equipement(id, nom, type,numserie,"magasin");
         dR.setValue(magasin);
         Toast.makeText(context, "Equipement modifié avec succée", Toast.LENGTH_LONG).show();
         return true;

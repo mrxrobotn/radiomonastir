@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.radiomonastir.CelluleEquipementActivity;
 import com.example.radiomonastir.Models.Cellule;
-import com.example.radiomonastir.Models.equipement_cellule;
+import com.example.radiomonastir.Models.Equipement;
 import com.example.radiomonastir.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -25,10 +25,10 @@ import java.util.List;
 
 public class equipement_celluleadapter extends RecyclerView.Adapter<cellule_equipementviewHolder> {
     private Context context;
-    private List<equipement_cellule>cellule_equipementlist;
+    private List<Equipement>cellule_equipementlist;
 
     private String idCell;
-    public equipement_celluleadapter (Context context,List<equipement_cellule> cellules,String idCell){
+    public equipement_celluleadapter (Context context,List<Equipement> cellules,String idCell){
         this.context=context;
         this.cellule_equipementlist=cellules;
         this.idCell = idCell;
@@ -43,22 +43,22 @@ public class equipement_celluleadapter extends RecyclerView.Adapter<cellule_equi
     }
     @Override
     public void onBindViewHolder(@NonNull cellule_equipementviewHolder cellule_equipementviewHolder, final int i) {
-        equipement_cellule cellule = cellule_equipementlist.get(i);
-        cellule_equipementviewHolder.textView21.setText(cellule.getEquipement_cellulenom());
-        cellule_equipementviewHolder.textView22.setText(cellule.getEquipement_celluletype());
+        Equipement cellule = cellule_equipementlist.get(i);
+        cellule_equipementviewHolder.textView21.setText(cellule.getEquipementNnom());
+        cellule_equipementviewHolder.textView22.setText(cellule.getEquipementTtype());
         cellule_equipementviewHolder.constraintequipementcellule.setOnClickListener((view) -> {
             Intent intent = new Intent(view.getContext(), CelluleEquipementActivity.class);
-            intent.putExtra("id",cellule.getEquipepment_celluleId());
-            intent.putExtra("nom",cellule.getEquipement_cellulenom());
-            intent.putExtra("type",cellule.getEquipement_celluletype());
-            intent.putExtra("numserie",cellule.getEquipement_cellulenumserie());
+            intent.putExtra("id",cellule.getEquipepmentId());
+            intent.putExtra("nom",cellule.getEquipementNnom());
+            intent.putExtra("type",cellule.getEquipementTtype());
+            intent.putExtra("numserie",cellule.getEquipementNumserie());
             context.startActivity(intent);
 
         });
         cellule_equipementviewHolder.constraintequipementcellule.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                showUpdateDeleteDialog(cellule.getEquipepment_celluleId(),cellule.getEquipement_cellulenom(),cellule.getEquipement_celluletype(),cellule.getEquipement_cellulenumserie());
+                showUpdateDeleteDialog(cellule.getEquipepmentId(),cellule.getEquipementNnom(),cellule.getEquipementTtype(),cellule.getEquipementNumserie());
                 return false;
             }
         });
@@ -110,7 +110,7 @@ public class equipement_celluleadapter extends RecyclerView.Adapter<cellule_equi
     }
 
     private boolean supprimerequipementcellule(String idCell,String idEquip) {
-        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("cellules/"+idCell+"/equipement").child(idEquip);
+        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("equipements").child(idEquip);
 
         dR.removeValue();
         Toast.makeText(context, "cellule equipement supprimé avec succée", Toast.LENGTH_LONG).show();
@@ -118,9 +118,9 @@ public class equipement_celluleadapter extends RecyclerView.Adapter<cellule_equi
     }
 
     private boolean modifierequipementcellule(String idCell,String idequip, String nom ,String type, String numserie) {
-        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("cellules/"+idCell+"/equipement").child(idequip);
+        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("equipements").child(idequip);
 
-        equipement_cellule cellule = new equipement_cellule(idequip, nom,type,numserie);
+        Equipement cellule = new Equipement(idequip, nom,type,numserie,"cellule",idCell);
         dR.setValue(cellule);
         Toast.makeText(context, "Cellule equipement modifié avec succée", Toast.LENGTH_LONG).show();
         return true;

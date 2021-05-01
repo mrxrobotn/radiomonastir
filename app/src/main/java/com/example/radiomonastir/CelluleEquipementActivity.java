@@ -17,7 +17,7 @@ import android.widget.Toast;
 import com.example.radiomonastir.Adapters.CelluleAdapter;
 import com.example.radiomonastir.Adapters.equipement_celluleadapter;
 import com.example.radiomonastir.Models.Cellule;
-import com.example.radiomonastir.Models.equipement_cellule;
+import com.example.radiomonastir.Models.Equipement;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -36,7 +36,7 @@ public class CelluleEquipementActivity extends AppCompatActivity {
     Button btnEnvoyer;
     RecyclerView recyclerView2;
 
-    List<equipement_cellule> cellule_equipementlist =new ArrayList<>();
+    List<Equipement> cellule_equipementlist =new ArrayList<>();
 
 
     String idCell;
@@ -61,7 +61,7 @@ public class CelluleEquipementActivity extends AppCompatActivity {
         recyclerView2.setHasFixedSize(true);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        myRef= database.getReference("cellules/"+idCell+"/equipement");
+        myRef= database.getReference("/equipements");
 
         button5.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -71,7 +71,7 @@ public class CelluleEquipementActivity extends AppCompatActivity {
                 String numserie = editText3.getText().toString().trim();
                 if (!TextUtils.isEmpty(nom)&& !TextUtils.isEmpty(type)&&!TextUtils.isEmpty(numserie)){
                     String id = myRef.push().getKey();
-                    equipement_cellule cellule= new equipement_cellule(id,nom,type,numserie);
+                    Equipement cellule=  new Equipement(id,nom,type,numserie,"cellule",idCell);
                     myRef.child(id).setValue(cellule);
                     editText.setText("");
                     editText2.setText("");
@@ -96,8 +96,10 @@ public class CelluleEquipementActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 cellule_equipementlist.clear();
                 for (DataSnapshot postSnapshot : snapshot.getChildren()) {
-                    equipement_cellule cellule = postSnapshot.getValue(equipement_cellule.class);
-                    cellule_equipementlist.add(cellule);
+                    Equipement equipement = postSnapshot.getValue(Equipement.class);
+                    if(equipement.getEquipementParentId() != null && equipement.getEquipementParentId().equals(idCell)){
+                        cellule_equipementlist.add(equipement);
+                    }
                 }
                 equipement_celluleadapter celluleAdapter = new equipement_celluleadapter(CelluleEquipementActivity.this, cellule_equipementlist,idCell);
                 recyclerView2.setAdapter(celluleAdapter);

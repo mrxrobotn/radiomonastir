@@ -13,7 +13,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.radiomonastir.Adapters.MagasinAdapter;
-import com.example.radiomonastir.Models.Magasin;
+import com.example.radiomonastir.Models.Equipement;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,7 +28,7 @@ public class MagasinActivity extends AppCompatActivity {
     Button btn_ajouter,btnEnvoyer;
     RecyclerView RecyclerViewMagasin;
 
-    List<Magasin> magasinEquipementList =new ArrayList<>();
+    List<Equipement> magasinEquipementList =new ArrayList<>();
 
 
 
@@ -51,7 +51,7 @@ public class MagasinActivity extends AppCompatActivity {
         RecyclerViewMagasin.setHasFixedSize(true);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        myRef= database.getReference("magasin");
+        myRef= database.getReference("equipements");
 
         btn_ajouter.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -61,7 +61,7 @@ public class MagasinActivity extends AppCompatActivity {
                 String num_serie = NumSerie.getText().toString().trim();
                 if (!TextUtils.isEmpty(nom) && !TextUtils.isEmpty(type) && !TextUtils.isEmpty(num_serie)){
                     String id = myRef.push().getKey();
-                    Magasin magasin= new Magasin(id, nom, type, num_serie);
+                    Equipement magasin= new Equipement(id, nom, type, num_serie,"magasin");
                     myRef.child(id).setValue(magasin);
                     NomEquipement.setText("");
                     TypeEquipement.setText("");
@@ -85,8 +85,10 @@ public class MagasinActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 magasinEquipementList.clear();
                 for (DataSnapshot postSnapshot : snapshot.getChildren()) {
-                    Magasin magasin = postSnapshot.getValue(Magasin.class);
-                    magasinEquipementList.add(magasin);
+                    Equipement equipement = postSnapshot.getValue(Equipement.class);
+                    if(equipement.getEquipementPlace().equals("magasin")) {
+                        magasinEquipementList.add(equipement);
+                    }
                 }
                 MagasinAdapter magasinAdapter = new MagasinAdapter(MagasinActivity.this, magasinEquipementList);
                 RecyclerViewMagasin.setAdapter(magasinAdapter);

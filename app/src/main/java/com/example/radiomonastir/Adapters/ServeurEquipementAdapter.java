@@ -3,7 +3,6 @@ package com.example.radiomonastir.Adapters;
 import android.app.AlertDialog;
 import android.content.Context;
 
-import android.content.Intent;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,10 +14,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.radiomonastir.FicheIncidentActivity;
-import com.example.radiomonastir.Models.Magasin;
-import com.example.radiomonastir.Models.Serveur;
-import com.example.radiomonastir.Models.ServeurEquipement;
+import com.example.radiomonastir.Models.Equipement;
 import com.example.radiomonastir.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -28,10 +24,10 @@ import java.util.List;
 public class ServeurEquipementAdapter extends RecyclerView.Adapter<ServeurEquipementViewHolder> {
 
     private Context context;
-    private List<ServeurEquipement> serv_equip_list;
+    private List<Equipement> serv_equip_list;
     private String idserveur;
 
-    public ServeurEquipementAdapter(Context context, List<ServeurEquipement> serv_equip, String idserveur) {
+    public ServeurEquipementAdapter(Context context, List<Equipement> serv_equip, String idserveur) {
         this.context = context;
         this.serv_equip_list = serv_equip;
         this.idserveur= this.idserveur;
@@ -46,14 +42,14 @@ public class ServeurEquipementAdapter extends RecyclerView.Adapter<ServeurEquipe
 
     @Override
     public void onBindViewHolder(@NonNull ServeurEquipementViewHolder serveurEquipementViewHolder, final int i) {
-        ServeurEquipement serveurEquipement = serv_equip_list.get(i);
-        serveurEquipementViewHolder.textView22.setText(serveurEquipement.getServEquipementType());
-        serveurEquipementViewHolder.textView23.setText(serveurEquipement.getServEquipementSN());
+        Equipement serveurEquipement = serv_equip_list.get(i);
+        serveurEquipementViewHolder.textView22.setText(serveurEquipement.getEquipementTtype());
+        serveurEquipementViewHolder.textView23.setText(serveurEquipement.getEquipementNumserie());
 
         serveurEquipementViewHolder.cl_serverequipement.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                showUpdateDeleteDialog(serveurEquipement.getServEquipementId(),serveurEquipement.getServEquipementType(),serveurEquipement.getServEquipementSN());
+                showUpdateDeleteDialog(serveurEquipement.getEquipepmentId(),serveurEquipement.getEquipementTtype(),serveurEquipement.getEquipementNumserie());
                 return false;
             }
         });
@@ -103,7 +99,7 @@ public class ServeurEquipementAdapter extends RecyclerView.Adapter<ServeurEquipe
     }
 
     private boolean deleteEquipement(String idserveur,String servEquipementId) {
-        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("serveurs/"+idserveur+"/equipements").child(servEquipementId);
+        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("equipements").child(servEquipementId);
 
         dR.removeValue();
         Toast.makeText(context, "Equipement supprimé avec succée", Toast.LENGTH_LONG).show();
@@ -111,9 +107,9 @@ public class ServeurEquipementAdapter extends RecyclerView.Adapter<ServeurEquipe
     }
 
     private boolean updateEquipement(String idserveur,String servEquipementId, String type, String num_serie) {
-        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("serveurs/"+idserveur+"/equipements").child(servEquipementId);
+        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("equipements").child(servEquipementId);
 
-        ServeurEquipement serveurEquipement = new ServeurEquipement(servEquipementId, type, num_serie);
+       Equipement serveurEquipement = new Equipement(servEquipementId, type, num_serie,"serveur",idserveur);
         dR.setValue(serveurEquipement);
         Toast.makeText(context, "Equipement modifié avec succée", Toast.LENGTH_LONG).show();
         return true;

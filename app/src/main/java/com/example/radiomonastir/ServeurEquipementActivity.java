@@ -14,7 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.radiomonastir.Adapters.ServeurEquipementAdapter;
-import com.example.radiomonastir.Models.ServeurEquipement;
+import com.example.radiomonastir.Models.Equipement;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -31,7 +31,7 @@ public class ServeurEquipementActivity extends AppCompatActivity {
     Button button5,button6;
     RecyclerView Rv_ServerEquip;
 
-    List<ServeurEquipement> serv_equip_list =new ArrayList<>();
+    List<Equipement> serv_equip_list =new ArrayList<>();
     String idserveur;
 
     DatabaseReference myRef;
@@ -58,7 +58,7 @@ public class ServeurEquipementActivity extends AppCompatActivity {
         Rv_ServerEquip.setLayoutManager(linearLayoutManager);
         Rv_ServerEquip.setHasFixedSize(true);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        myRef= database.getReference("serveurs/"+idserveur+"/equipements");
+        myRef= database.getReference("equipements");
 
         button5.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -67,7 +67,7 @@ public class ServeurEquipementActivity extends AppCompatActivity {
                 String num_serie = editTextTextPersonName3.getText().toString().trim();
                 if (!TextUtils.isEmpty(type) && !TextUtils.isEmpty(num_serie)){
                     String id = myRef.push().getKey();
-                    ServeurEquipement serveurEquipement= new ServeurEquipement(id,type,num_serie);
+                    Equipement serveurEquipement= new Equipement(id,"hjbkbk",type,num_serie,"serveur", idserveur);
                     myRef.child(id).setValue(serveurEquipement);
                     editTextTextPersonName2.setText("");
                     editTextTextPersonName3.setText("");
@@ -88,8 +88,11 @@ public class ServeurEquipementActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 serv_equip_list.clear();
                 for (DataSnapshot postSnapshot : snapshot.getChildren()) {
-                    ServeurEquipement serveurEquipement = postSnapshot.getValue(ServeurEquipement.class);
-                    serv_equip_list.add(serveurEquipement);
+                    Equipement serveurEquipement = postSnapshot.getValue(Equipement.class);
+                    if(serveurEquipement.getEquipementParentId() != null && serveurEquipement.getEquipementParentId().equals(idserveur)){
+                        serv_equip_list.add(serveurEquipement);
+
+                    }
                 }
                 ServeurEquipementAdapter serveurEquipementAdapter = new ServeurEquipementAdapter(ServeurEquipementActivity.this, serv_equip_list,idserveur);
                 Rv_ServerEquip.setAdapter(serveurEquipementAdapter);
