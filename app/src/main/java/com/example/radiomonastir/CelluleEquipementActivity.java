@@ -31,7 +31,6 @@ public class CelluleEquipementActivity extends AppCompatActivity {
     EditText editText;
     EditText editText2;
     EditText editText3;
-    TextView textView14;
     Button button5;
     Button btnEnvoyer;
     RecyclerView recyclerView2;
@@ -47,11 +46,14 @@ public class CelluleEquipementActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cellule_equipement);
 
          idCell = getIntent().getStringExtra("id");
+        TextView textView14 = (TextView) findViewById(R.id.textView14);
+        Bundle bundle=getIntent().getExtras();
+        String s1=bundle.getString("nomcellule");
+        textView14.setText(s1);
 
         editText=(EditText)findViewById(R.id.editText);
         editText2=(EditText)findViewById(R.id.editText2);
         editText3=(EditText)findViewById(R.id.editText3);
-        textView14=(TextView) findViewById(R.id.textView14);
         button5=(Button)findViewById(R.id.button5);
         btnEnvoyer=(Button)findViewById(R.id.btnEnvoyer);
         recyclerView2=(RecyclerView)findViewById(R.id.recyclerView2);

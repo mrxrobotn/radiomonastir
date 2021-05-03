@@ -49,9 +49,12 @@ public class CelluleAdapter extends RecyclerView.Adapter<CelluleViewHolder> {
         celluleViewHolder.item_cellule.setOnClickListener((view) -> {
             Intent intent = new Intent(context, CelluleEquipementActivity.class);
             intent.putExtra("id",cellule.getCelluleId());
-            intent.putExtra("nom",cellule.getCelluleName());
+            intent.putExtra("nomcellule",cellule.getCelluleName());
             context.startActivity(intent);
 
+
+
+            
         });
         celluleViewHolder.item_cellule.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
