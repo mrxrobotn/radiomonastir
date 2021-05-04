@@ -44,7 +44,6 @@ public class StudioEquipementActivity extends AppCompatActivity {
         StudioEquipementType = (EditText) findViewById(R.id.StudioEquipementType);
         StudioEquipementName = (EditText) findViewById(R.id.StudioEquipementSN);
         btnAddStudioEquipement = (Button) findViewById(R.id.btnAddStudioEquipement);
-        btnSendStudioEquipement = (Button) findViewById(R.id.btnSendStudioEquipement);
         Rv_Studio_Equipement = (RecyclerView) findViewById(R.id.Rv_Studio_Equipement);
 
         Bundle bundle=getIntent().getExtras();

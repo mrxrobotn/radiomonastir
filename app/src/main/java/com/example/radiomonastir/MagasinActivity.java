@@ -43,7 +43,6 @@ public class MagasinActivity extends AppCompatActivity {
         TypeEquipement=(EditText)findViewById(R.id.TypeEquipement);
         NumSerie=(EditText)findViewById(R.id.NumSerie);
         btn_ajouter=(Button)findViewById(R.id.btn_ajouter);
-        btnEnvoyer=(Button)findViewById(R.id.btnEnvoyer);
         RecyclerViewMagasin=(RecyclerView)findViewById(R.id.RecyclerViewMagasin);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);

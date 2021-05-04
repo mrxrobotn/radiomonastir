@@ -55,7 +55,6 @@ public class CelluleEquipementActivity extends AppCompatActivity {
         editText2=(EditText)findViewById(R.id.editText2);
         editText3=(EditText)findViewById(R.id.editText3);
         button5=(Button)findViewById(R.id.button5);
-        btnEnvoyer=(Button)findViewById(R.id.btnEnvoyer);
         recyclerView2=(RecyclerView)findViewById(R.id.recyclerView2);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);

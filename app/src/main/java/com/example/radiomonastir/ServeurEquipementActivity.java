@@ -47,7 +47,6 @@ public class ServeurEquipementActivity extends AppCompatActivity {
         editTextTextPersonName2 = (EditText) findViewById(R.id.editTextTextPersonName2);
         editTextTextPersonName3 = (EditText) findViewById(R.id.editTextTextPersonName3);
         button5 = (Button) findViewById(R.id.button5);
-        button6 = (Button) findViewById(R.id.button6);
         Rv_ServerEquip = (RecyclerView) findViewById(R.id.Rv_ServerEquip);
 
         Bundle bundle=getIntent().getExtras();
@@ -67,7 +66,7 @@ public class ServeurEquipementActivity extends AppCompatActivity {
                 String num_serie = editTextTextPersonName3.getText().toString().trim();
                 if (!TextUtils.isEmpty(type) && !TextUtils.isEmpty(num_serie)){
                     String id = myRef.push().getKey();
-                    Equipement serveurEquipement= new Equipement(id,"hjbkbk",type,num_serie,"serveur", idserveur);
+                    Equipement serveurEquipement= new Equipement(id,"equipementNnom",type,num_serie,"serveur", idserveur);
                     myRef.child(id).setValue(serveurEquipement);
                     editTextTextPersonName2.setText("");
                     editTextTextPersonName3.setText("");
