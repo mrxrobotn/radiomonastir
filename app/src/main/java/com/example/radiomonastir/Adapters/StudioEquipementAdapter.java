@@ -13,7 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.radiomonastir.Models.StudioEquipement;
+import com.example.radiomonastir.Models.Equipement;
 import com.example.radiomonastir.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -24,11 +24,13 @@ import java.util.List;
 public class StudioEquipementAdapter extends RecyclerView.Adapter<StudioEquipementViewHolder> {
 
     private Context context;
-    private List<StudioEquipement> studioEquipementList;
+    private List<Equipement> studioEquipementList;
+    private String idstudio;
 
-    public StudioEquipementAdapter (Context context,List<StudioEquipement> studio_equip) {
+    public StudioEquipementAdapter(Context context, List<Equipement> studio_equip, String idstudio) {
         this.context = context;
         this.studioEquipementList = studio_equip;
+        this.idstudio = this.idstudio;
     }
 
     @NonNull
@@ -40,16 +42,16 @@ public class StudioEquipementAdapter extends RecyclerView.Adapter<StudioEquipeme
 
     @Override
     public void onBindViewHolder(@NonNull StudioEquipementViewHolder studioEquipementViewHolder, int i) {
-        StudioEquipement studioEquipement = studioEquipementList.get(i);
-        studioEquipementViewHolder.StudioEquipementName.setText(studioEquipement.getStudioEquipementName());
-        studioEquipementViewHolder.StudioEquipementType.setText(studioEquipement.getStudioEquipementType());
-        studioEquipementViewHolder.StudioEquipementSN.setText(studioEquipement.getstudioEquipementSN());
+        Equipement studio_equip = studioEquipementList.get(i);
+        studioEquipementViewHolder.StudioEquipementName.setText(studio_equip.getEquipementNnom());
+        studioEquipementViewHolder.StudioEquipementType.setText(studio_equip.getEquipementTtype());
+        studioEquipementViewHolder.StudioEquipementSN.setText(studio_equip.getEquipementNumserie());
 
 
         studioEquipementViewHolder.cl_StudioEquipement.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                showUpdateDeleteDialog(studioEquipement.getStudioEquipementName(),studioEquipement.getStudioEquipementType(),studioEquipement.getstudioEquipementSN());
+                showUpdateDeleteDialog(studio_equip.getEquipementNnom(),studio_equip.getEquipementTtype(),studio_equip.getEquipementNumserie());
                 return false;
             }
         });
@@ -78,7 +80,7 @@ public class StudioEquipementAdapter extends RecyclerView.Adapter<StudioEquipeme
                 String type = steqtype.getText().toString().trim();
                 String num_serie = steqsn.getText().toString().trim();
                 if (!TextUtils.isEmpty(nom) && !TextUtils.isEmpty(type) && !TextUtils.isEmpty(num_serie)) {
-                    updateEquipement(nom, type, num_serie);
+                    updateEquipement(idstudio,nom, type, num_serie);
                     b.dismiss();
                 }
             }
@@ -94,18 +96,18 @@ public class StudioEquipementAdapter extends RecyclerView.Adapter<StudioEquipeme
     }
 
     private boolean deleteEquipement(String studioEquipementSN) {
-        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("studios/equipements").child(studioEquipementSN);
+        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("equipements").child(studioEquipementSN);
 
         dR.removeValue();
         Toast.makeText(context, "Equipement supprimé avec succée", Toast.LENGTH_LONG).show();
         return true;
     }
 
-    private boolean updateEquipement(String nom, String type, String num_serie) {
-        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("studios/equipements").child(num_serie);
+    private boolean updateEquipement( String id,String nom, String type, String num_serie) {
+        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("equipements").child(num_serie);
 
-        StudioEquipement studioEquipement = new StudioEquipement(nom, type, num_serie);
-        dR.setValue(studioEquipement);
+       Equipement studio_equip  = new Equipement(id,nom,type,num_serie,"cellule",idstudio);
+        dR.setValue(studio_equip);
         Toast.makeText(context, "Equipement modifié avec succée", Toast.LENGTH_LONG).show();
         return true;
     }
