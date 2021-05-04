@@ -1,22 +1,19 @@
 package com.example.radiomonastir;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.AlertDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.radiomonastir.Adapters.StudioAdapter;
 import com.example.radiomonastir.Models.Studio;
-import com.example.radiomonastir.Adapters.StudioList;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,10 +29,10 @@ public class StudioActivity extends AppCompatActivity {
     EditText editTextNumber;
     Spinner spinnerName;
     Button buttonAddStudio;
-    ListView listViewStudios;
+    RecyclerView recyclerViewStudios;
 
     //a list to store all the artist from firebase database
-    List<Studio> studios;
+    List<Studio> studios =new ArrayList<>();
 
     //our database reference object
     DatabaseReference myRef;
@@ -45,17 +42,21 @@ public class StudioActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_studio);
 
-        //getting the reference of artists node
-        myRef = FirebaseDatabase.getInstance().getReference("studios");
-
         //getting views
         editTextNumber = (EditText) findViewById(R.id.editTextNumber);
         spinnerName = (Spinner) findViewById(R.id.spinnerName);
-        listViewStudios = (ListView) findViewById(R.id.listViewStudios);
+        recyclerViewStudios = (RecyclerView) findViewById(R.id.recyclerViewStudios);
         buttonAddStudio = (Button) findViewById(R.id.buttonAddStudio);
 
-        //list to store artists
-        studios = new ArrayList<>();
+
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        recyclerViewStudios.setLayoutManager(linearLayoutManager);
+        recyclerViewStudios.setHasFixedSize(true);
+
+        //getting the reference of artists node
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        myRef= database.getReference("studios");
 
 
         //adding an onclicklistener to button
@@ -68,80 +69,7 @@ public class StudioActivity extends AppCompatActivity {
                 addStudio();
             }
         });
-
-        //adding an onitemlongclicklistener to listView items
-        listViewStudios.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Studio studio = studios.get(i);
-                showUpdateDeleteDialog(studio.getStudioId(), studio.getStudioNumber());
-                return true;
-            }
-        });
     }
-
-
-    /*--------------------------------------------methods-----------------------------------------------*/
-
-    private void showUpdateDeleteDialog(final String studioId, String studioNumber) {
-        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
-        LayoutInflater inflater = getLayoutInflater();
-        final View dialogView = inflater.inflate(R.layout.studio_dialogue, null);
-        dialogBuilder.setView(dialogView);
-
-        final EditText editTextNumber = (EditText) dialogView.findViewById(R.id.editTextNumber);
-        final Spinner spinnerName = (Spinner) dialogView.findViewById(R.id.spinnerName);
-        final Button buttonUpdate = (Button) dialogView.findViewById(R.id.buttonUpdateStudio);
-        final Button buttonDelete = (Button) dialogView.findViewById(R.id.buttonDeleteStudio);
-
-        dialogBuilder.setTitle(studioNumber);
-        final AlertDialog b = dialogBuilder.create();
-        b.show();
-
-        buttonUpdate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String number = editTextNumber.getText().toString().trim();
-                String name = spinnerName.getSelectedItem().toString();
-                if (!TextUtils.isEmpty(number)) {
-                    updateStudio(studioId, number, name);
-                    b.dismiss();
-                }
-            }
-        });
-
-
-        buttonDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                deleteStudio(studioId);
-                b.dismiss();
-            }
-        });
-    }
-
-    private boolean updateStudio(String id, String number, String name) {
-        //getting the specified artist reference
-        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("studios").child(id);
-
-        //updating artist
-        Studio studio = new Studio(id, number, name);
-        dR.setValue(studio);
-        Toast.makeText(getApplicationContext(), "Studio modifié avec succée", Toast.LENGTH_LONG).show();
-        return true;
-    }
-
-    private boolean deleteStudio(String id) {
-        //getting the specified artist reference
-        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("studios").child(id);
-
-        //removing artist
-        dR.removeValue();
-        Toast.makeText(getApplicationContext(), "Studio supprimé avec succée", Toast.LENGTH_LONG).show();
-        return true;
-    }
-
 
 
     /*
@@ -167,9 +95,9 @@ public class StudioActivity extends AppCompatActivity {
                 }
 
                 //creating adapter
-                StudioList studioAdapter = new StudioList(StudioActivity.this, studios);
+                StudioAdapter studioAdapter = new StudioAdapter(StudioActivity.this, studios);
                 //attaching adapter to the listview
-                listViewStudios.setAdapter(studioAdapter);
+                recyclerViewStudios.setAdapter(studioAdapter);
             }
 
             @Override
