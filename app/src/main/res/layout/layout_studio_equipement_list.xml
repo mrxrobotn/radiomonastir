@@ -12,6 +12,8 @@
         android:id="@+id/StudioEquipementName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="100dp"
+        android:layout_marginRight="100dp"
         android:text="Nom Equipement"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
         android:textSize="18sp"
@@ -23,6 +25,8 @@
         android:id="@+id/StudioEquipementType"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="100dp"
+        android:layout_marginRight="100dp"
         android:text="Type"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,6 +38,8 @@
         android:id="@+id/StudioEquipementSN"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="100dp"
+        android:layout_marginRight="100dp"
         android:text="N°Serie"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
         app:layout_constraintEnd_toEndOf="parent"
@@ -49,6 +55,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/StudioEquipementSN" />
+
+    <ImageView
+        android:id="@+id/imageView14"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginLeft="42dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="21dp"
+        app:layout_constraintBottom_toTopOf="@+id/divider2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/StudioEquipementName"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/send2" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
