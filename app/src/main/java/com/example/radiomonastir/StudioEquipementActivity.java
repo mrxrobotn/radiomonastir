@@ -14,7 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.radiomonastir.Adapters.StudioEquipementAdapter;
-import com.example.radiomonastir.Models.StudioEquipement;
+import com.example.radiomonastir.Models.Equipement;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,7 +29,8 @@ public class StudioEquipementActivity extends AppCompatActivity {
     EditText StudioEquipementName, StudioEquipementType, StudioEquipementSN;
     Button btnAddStudioEquipement, btnSendStudioEquipement;
     RecyclerView Rv_Studio_Equipement;
-    List<StudioEquipement> studioEquipementList =new ArrayList<>();
+    List<Equipement> studioEquipementList =new ArrayList<>();
+    String idstudio;
 
     DatabaseReference myRef;
 
@@ -54,7 +55,7 @@ public class StudioEquipementActivity extends AppCompatActivity {
         Rv_Studio_Equipement.setLayoutManager(linearLayoutManager);
         Rv_Studio_Equipement.setHasFixedSize(true);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        myRef= database.getReference("studios/equipements");
+        myRef= database.getReference("equipements");
 
         btnAddStudioEquipement.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -64,8 +65,8 @@ public class StudioEquipementActivity extends AppCompatActivity {
                 String num_serie = StudioEquipementSN.getText().toString().trim();
                 if (!TextUtils.isEmpty(nom) && !TextUtils.isEmpty(type) && !TextUtils.isEmpty(num_serie)){
                     String id = myRef.push().getKey();
-                    StudioEquipement studioEquipement= new StudioEquipement(nom,type,num_serie);
-                    myRef.child(id).setValue(studioEquipement);
+                   Equipement studio_equip= new Equipement(id,nom,type,num_serie,"studio_equip",idstudio);
+                    myRef.child(id).setValue(studio_equip);
                     StudioEquipementName.setText("");
                     StudioEquipementType.setText("");
                     StudioEquipementSN.setText("");
@@ -86,10 +87,13 @@ public class StudioEquipementActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 studioEquipementList.clear();
                 for (DataSnapshot postSnapshot : snapshot.getChildren()) {
-                    StudioEquipement studioEquipement = postSnapshot.getValue(StudioEquipement.class);
-                    studioEquipementList.add(studioEquipement);
+                   Equipement equipement = postSnapshot.getValue(Equipement.class);
+                    studioEquipementList.add(equipement);
+                    if(equipement.getEquipementParentId() != null && equipement.getEquipementParentId().equals( idstudio)){
+                        studioEquipementList.add(equipement);
+                    }
                 }
-                StudioEquipementAdapter studioEquipementAdapter = new StudioEquipementAdapter(StudioEquipementActivity.this, studioEquipementList);
+                StudioEquipementAdapter studioEquipementAdapter = new StudioEquipementAdapter(StudioEquipementActivity.this, studioEquipementList,idstudio);
                 Rv_Studio_Equipement.setAdapter(studioEquipementAdapter);
             }
 
