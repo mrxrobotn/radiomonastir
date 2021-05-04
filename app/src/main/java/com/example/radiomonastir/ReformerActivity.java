@@ -27,85 +27,80 @@ import java.util.List;
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.V;
 
 public class ReformerActivity extends AppCompatActivity {
-    EditText editTextTextPersonName7,editTextTextPersonName8,editTextTextPersonName9;
+    EditText editTextTextPersonName7, editTextTextPersonName8, editTextTextPersonName9;
     Button button7;
     RecyclerView recyclerviewreformer;
 
-    List<Equipement> eqiupement_reformerlist =new ArrayList<>();
-
+    List<Equipement> eqiupement_reformerlist = new ArrayList<>();
 
 
     DatabaseReference data;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reformer);
 
-        editTextTextPersonName7=(EditText)findViewById(R.id.editTextTextPersonName7);
-        editTextTextPersonName8=(EditText)findViewById(R.id.editTextTextPersonName8);
-        editTextTextPersonName9=(EditText)findViewById(R.id.editTextTextPersonName9);
-      button7=(Button)findViewById(R.id.button7);
-        recyclerviewreformer=(RecyclerView)findViewById(R.id.recyclerviewreformer);
+        editTextTextPersonName7 = (EditText) findViewById(R.id.editTextTextPersonName7);
+        editTextTextPersonName8 = (EditText) findViewById(R.id.editTextTextPersonName8);
+        editTextTextPersonName9 = (EditText) findViewById(R.id.editTextTextPersonName9);
+        button7 = (Button) findViewById(R.id.button7);
+        recyclerviewreformer = (RecyclerView) findViewById(R.id.recyclerviewreformer);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerviewreformer.setLayoutManager(linearLayoutManager);
         recyclerviewreformer.setHasFixedSize(true);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        data= database.getReference("equipements");
+        data = database.getReference("equipements");
 
 
-
+        button7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String nom = editTextTextPersonName7.getText().toString().trim();
+                String type = editTextTextPersonName8.getText().toString().trim();
+                String num_serie = editTextTextPersonName9.getText().toString().trim();
+                if (!TextUtils.isEmpty(nom) && !TextUtils.isEmpty(type) && !TextUtils.isEmpty(num_serie)) {
+                    String id = data.push().getKey();
+                    Equipement reformer = new Equipement(id, nom, type, num_serie, "reformer");
+                    data.child(id).setValue(reformer);
+                    editTextTextPersonName7.setText("");
+                    editTextTextPersonName8.setText("");
+                    editTextTextPersonName9.setText("");
+                    Toast.makeText(ReformerActivity.this, "Equipement Ajouter", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(ReformerActivity.this, "Erreur d'ajout", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
 
     }
 
-   button7.setOnClickListener(new View.OnClickListener(){
-        @Override
-        public void onClick(View v) {
-            String nom = editTextTextPersonName7.getText().toString().trim();
-            String type =editTextTextPersonName8.getText().toString().trim();
-            String num_serie = editTextTextPersonName9.getText().toString().trim();
-            if (!TextUtils.isEmpty(nom) && !TextUtils.isEmpty(type) && !TextUtils.isEmpty(num_serie)){
-                String id = data.push().getKey();
-                Equipement reformer= new Equipement(id, nom, type, num_serie,"reformer");
-                data.child(id).setValue(reformer);
-                editTextTextPersonName7.setText("");
-                editTextTextPersonName8.setText("");
-                editTextTextPersonName9.setText("");
-                Toast.makeText(ReformerActivity.this,"Equipement Ajouter",Toast.LENGTH_LONG).show();
-            }
-            else {
-                Toast.makeText(ReformerActivity.this,"Erreur d'ajout",Toast.LENGTH_LONG).show();
-            }
-        }
-    });
-
-}
-
 
     @Override
-protected void onStart() {
-    super.onStart();
-    data.addValueEventListener(new ValueEventListener() {
-        @Override
-        public void onDataChange(@NonNull DataSnapshot snapshot) {
-            eqiupement_reformerlist.clear();
-            for (DataSnapshot postSnapshot : snapshot.getChildren()) {
-                Equipement equipement = postSnapshot.getValue(Equipement.class);
-                if (equipement.getEquipementPlace().equals("reformer")) {
-                    eqiupement_reformerlist.add(equipement);
+    protected void onStart() {
+        super.onStart();
+        data.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                eqiupement_reformerlist.clear();
+                for (DataSnapshot postSnapshot : snapshot.getChildren()) {
+                    Equipement equipement = postSnapshot.getValue(Equipement.class);
+                    if (equipement.getEquipementPlace().equals("reformer")) {
+                        eqiupement_reformerlist.add(equipement);
+                    }
                 }
+                reformer_equipementAdapter reformer_equipementAdapter = new reformer_equipementAdapter(ReformerActivity.this, eqiupement_reformerlist);
+                recyclerviewreformer.setAdapter(reformer_equipementAdapter);
             }
-            reformer_equipementAdapter reformer_equipementAdapter = new reformer_equipementAdapter(ReformerActivity.this, eqiupement_reformerlist);
-            recyclerviewreformer.setAdapter(reformer_equipementAdapter);
-        }
 
-        @Override
-        public void onCancelled(@NonNull DatabaseError error) {
-            Toast.makeText(ReformerActivity.this, "failed", Toast.LENGTH_LONG);
-        }
-    });
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(ReformerActivity.this, "failed", Toast.LENGTH_LONG);
+            }
+        });
+    }
 }
-
 
 
