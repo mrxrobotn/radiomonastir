@@ -26,7 +26,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersViewHolder> {
     @NonNull
     @Override
     public UsersViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, final int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.layout_gesion_technicien_list,viewGroup,false);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.layout_gestion_technicien_list,viewGroup,false);
         return new UsersViewHolder(view);
     }
 

@@ -90,7 +90,7 @@ public class HomeAdminActivity extends AppCompatActivity {
         findViewById(R.id.imageView6).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeAdminActivity.this, SignUpActivity.class);
+                Intent intent = new Intent(HomeAdminActivity.this, GestionTechnicienActivity.class);
                 startActivity(intent);
             }
         });
