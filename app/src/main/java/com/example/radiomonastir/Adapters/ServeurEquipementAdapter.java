@@ -30,7 +30,7 @@ public class ServeurEquipementAdapter extends RecyclerView.Adapter<ServeurEquipe
     public ServeurEquipementAdapter(Context context, List<Equipement> serv_equip, String idserveur) {
         this.context = context;
         this.serv_equip_list = serv_equip;
-        this.idserveur= this.idserveur;
+        this.idserveur= idserveur;
     }
 
     @NonNull

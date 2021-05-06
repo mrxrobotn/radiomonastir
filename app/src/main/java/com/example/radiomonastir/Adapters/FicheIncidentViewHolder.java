@@ -14,9 +14,9 @@ public class FicheIncidentViewHolder extends RecyclerView.ViewHolder{
     public ConstraintLayout cl_ficheincident;
     public FicheIncidentViewHolder (View itemView){
         super(itemView);
-        editTextDate = (EditText)itemView.findViewById(R.id.editTextDate);
-        textArea_Panne = (EditText)itemView.findViewById(R.id.textArea_Panne);
-        textArea_Observation = (EditText)itemView.findViewById(R.id.textArea_Observation);
+        editTextDate = (TextView) itemView.findViewById(R.id.editTextDate);
+        textArea_Panne = (TextView) itemView.findViewById(R.id.textArea_Panne);
+        textArea_Observation = (TextView) itemView.findViewById(R.id.textArea_Observation);
         cl_ficheincident = (ConstraintLayout)itemView.findViewById(R.id.cl_ficheincident);
 
     }

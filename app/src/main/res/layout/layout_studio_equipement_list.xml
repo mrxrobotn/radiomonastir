@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/cl_StudioEquipement"
+    android:id="@+id/constraint_StudioEquipement"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
@@ -35,7 +35,7 @@
         app:layout_constraintTop_toBottomOf="@+id/StudioEquipementName" />
 
     <TextView
-        android:id="@+id/StudioEquipementSN"
+        android:id="@+id/StudioEquipementNS"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginEnd="100dp"
@@ -54,7 +54,7 @@
         android:background="?android:attr/listDivider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/StudioEquipementSN" />
+        app:layout_constraintTop_toBottomOf="@+id/StudioEquipementNS" />
 
     <ImageView
         android:id="@+id/imageView14"

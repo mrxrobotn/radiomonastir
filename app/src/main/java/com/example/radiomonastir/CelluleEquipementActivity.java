@@ -62,7 +62,7 @@ public class CelluleEquipementActivity extends AppCompatActivity {
         recyclerView2.setHasFixedSize(true);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        myRef= database.getReference("/equipements");
+        myRef= database.getReference("equipements");
 
         button5.setOnClickListener(new View.OnClickListener(){
             @Override

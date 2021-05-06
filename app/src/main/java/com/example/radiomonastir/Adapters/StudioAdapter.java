@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.radiomonastir.Models.Studio;
 import com.example.radiomonastir.R;
-import com.example.radiomonastir.StudioEquipementActivity;
+import com.example.radiomonastir.equipementStudioActivity;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -44,7 +44,7 @@ public class StudioAdapter extends RecyclerView.Adapter<StudioViewHolder> {
         studioViewHolder.textViewNumber.setText(studio.getStudioNumber());
         studioViewHolder.textViewName.setText(studio.getStudioName());
         studioViewHolder.listeitem.setOnClickListener((view) -> {
-            Intent intent = new Intent(context, StudioEquipementActivity.class);
+            Intent intent = new Intent(context, equipementStudioActivity.class);
             intent.putExtra("id", studio.getStudioId());
             intent.putExtra("number", studio.getStudioNumber());
             context.startActivity(intent);
