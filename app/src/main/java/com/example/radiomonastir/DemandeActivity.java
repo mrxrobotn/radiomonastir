@@ -43,7 +43,7 @@ public class DemandeActivity extends AppCompatActivity {
         Rv_demande.setLayoutManager(linearLayoutManager);
         Rv_demande.setHasFixedSize(true);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        myRef= database.getReference("demandes");
+        myRef= database.getReference("maintenance/demandes");
 
         button11.setOnClickListener(new View.OnClickListener(){
             @Override
