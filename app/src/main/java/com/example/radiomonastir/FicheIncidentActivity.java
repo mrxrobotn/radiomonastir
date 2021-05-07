@@ -62,7 +62,7 @@ public class FicheIncidentActivity extends AppCompatActivity {
         recyclerView4.setHasFixedSize(true);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        myRef= database.getReference("fiches_incident");
+        myRef= database.getReference("fiches_incident/Equipement/magasin");
 
         button6.setOnClickListener(new View.OnClickListener(){
             @Override
