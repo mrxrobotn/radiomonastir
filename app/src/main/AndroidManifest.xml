@@ -13,7 +13,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RadioMonastir">
-        <activity android:name=".GestionTechnicienActivity"/>
+        <activity android:name=".MaintenanceAdminActivity"></activity>
+        <activity android:name=".DemandeActivity" />
+        <activity android:name=".PanneActivity" />
+        <activity android:name=".GestionTechnicienActivity" />
         <activity android:name=".FicheIncidentActivity" />
         <activity android:name=".ServeurEquipementActivity" />
         <activity android:name=".equipementStudioActivity" />
@@ -32,7 +35,7 @@
         <activity android:name=".MagasinActivity" />
         <activity android:name=".ReformerActivity" />
         <activity android:name=".ServeurActivity" />
-        <activity android:name=".MaintenanceActivity" />
+        <activity android:name=".MaintenanceTechnicienActivity" />
         <activity android:name=".PlanificationActivity" />
         <activity android:name=".HomeAdminActivity" />
         <activity android:name=".SignUpActivity" />

@@ -47,15 +47,6 @@ public class MagasinAdapter extends RecyclerView.Adapter<MagasinViewHolder> {
         magasinViewHolder.NomEquipement.setText(magasin.getEquipementNnom());
         magasinViewHolder.TypeEquipement.setText(magasin.getEquipementTtype());
         magasinViewHolder.NumSerie.setText(magasin.getEquipementNumserie());
-        magasinViewHolder.item_magasin.setOnClickListener((view) -> {
-            Intent intent = new Intent(view.getContext(), FicheIncidentActivity.class);
-            intent.putExtra("id", magasin.getEquipepmentId());
-            intent.putExtra("nom", magasin.getEquipementNnom());
-            intent.putExtra("type", magasin.getEquipementTtype());
-            intent.putExtra("numserie", magasin.getEquipementNumserie());
-            context.startActivity(intent);
-
-        });
 
         magasinViewHolder.item_magasin.setOnLongClickListener(new View.OnLongClickListener() {
             @Override

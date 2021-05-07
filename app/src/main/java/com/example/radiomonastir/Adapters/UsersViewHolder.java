@@ -16,6 +16,6 @@ public class UsersViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
         editTextTextPersonName = (TextView) itemView.findViewById(R.id.editTextTextPersonName);
         editTextTextEmailAddress2 = (TextView) itemView.findViewById(R.id.editTextTextEmailAddress2);
-        cl_gestiontechnicien = (ConstraintLayout) itemView.findViewById(R.id.cl_StudioEquipement);
+        cl_gestiontechnicien = (ConstraintLayout) itemView.findViewById(R.id.cl_gestiontechnicien);
     }
 }
