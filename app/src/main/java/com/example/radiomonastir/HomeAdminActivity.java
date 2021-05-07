@@ -50,7 +50,7 @@ public class HomeAdminActivity extends AppCompatActivity {
         findViewById(R.id.imageButton7).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeAdminActivity.this, MaintenanceActivity.class);
+                Intent intent = new Intent(HomeAdminActivity.this, MaintenanceAdminActivity.class);
                 startActivity(intent);
             }
         });
