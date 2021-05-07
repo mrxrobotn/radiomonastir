@@ -43,8 +43,8 @@ public class MaintenanceAdminActivity extends AppCompatActivity {
         Rv_demande.setHasFixedSize(true);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        myRef1= database.getReference("magasin/pannes");
-        myRef2= database.getReference("magasin/demandes");
+        myRef1= database.getReference("maintenance/pannes");
+        myRef2= database.getReference("maintenance/demandes");
     }
 
     @Override
