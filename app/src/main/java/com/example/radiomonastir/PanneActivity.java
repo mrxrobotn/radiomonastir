@@ -43,7 +43,7 @@ public class PanneActivity extends AppCompatActivity {
         Rv_panne.setLayoutManager(linearLayoutManager);
         Rv_panne.setHasFixedSize(true);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        myRef= database.getReference("magasin/pannes");
+        myRef= database.getReference("pannes");
 
         button10.setOnClickListener(new View.OnClickListener(){
             @Override

@@ -56,9 +56,11 @@ public class fiche_incident_celluleActivity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView5.setLayoutManager(linearLayoutManager);
         recyclerView5.setHasFixedSize(true);
+        String id= getIntent().getStringExtra("id");
+    String nom= getIntent().getStringExtra("nom");
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        myRef= database.getReference("fiches_incident/Equipement/id");
+        myRef= database.getReference("equipements/"+id+"/fiches_incident");
 
         button10.setOnClickListener(new View.OnClickListener(){
             @Override
