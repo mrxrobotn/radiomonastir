@@ -15,9 +15,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.radiomonastir.CelluleEquipementActivity;
+import com.example.radiomonastir.FicheIncidentActivity;
 import com.example.radiomonastir.Models.Cellule;
 import com.example.radiomonastir.Models.Equipement;
 import com.example.radiomonastir.R;
+import com.example.radiomonastir.fiche_incident_celluleActivity;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -47,7 +49,7 @@ public class equipement_celluleadapter extends RecyclerView.Adapter<cellule_equi
         cellule_equipementviewHolder.textView21.setText(cellule.getEquipementNnom());
         cellule_equipementviewHolder.textView22.setText(cellule.getEquipementTtype());
         cellule_equipementviewHolder.constraintequipementcellule.setOnClickListener((view) -> {
-            Intent intent = new Intent(view.getContext(), CelluleEquipementActivity.class);
+            Intent intent = new Intent(view.getContext(), fiche_incident_celluleActivity.class);
             intent.putExtra("id",cellule.getEquipepmentId());
             intent.putExtra("nom",cellule.getEquipementNnom());
             intent.putExtra("type",cellule.getEquipementTtype());
