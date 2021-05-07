@@ -31,7 +31,7 @@ public class StudioActivity extends AppCompatActivity {
     Button buttonAddStudio;
     RecyclerView recyclerViewStudios;
 
-    //a list to store all the artist from firebase database
+    //a list to store all the studio from firebase database
     List<Studio> studios =new ArrayList<>();
 
     //our database reference object
@@ -54,7 +54,7 @@ public class StudioActivity extends AppCompatActivity {
         recyclerViewStudios.setLayoutManager(linearLayoutManager);
         recyclerViewStudios.setHasFixedSize(true);
 
-        //getting the reference of artists node
+        //getting the reference of studios node
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         myRef= database.getReference("studios");
 
@@ -63,7 +63,7 @@ public class StudioActivity extends AppCompatActivity {
         buttonAddStudio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //calling the method addArtist()
+                //calling the method addStudio()
                 //the method is defined below
                 //this method is actually performing the write operation
                 addStudio();
@@ -83,14 +83,14 @@ public class StudioActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                //clearing the previous artist list
+                //clearing the previous studio list
                 studios.clear();
 
                 //iterating through all the nodes
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                    //getting artist
+                    //getting studio
                     Studio studio = postSnapshot.getValue(Studio.class);
-                    //adding artist to the list
+                    //adding studio to the list
                     studios.add(studio);
                 }
 
@@ -110,7 +110,7 @@ public class StudioActivity extends AppCompatActivity {
 
 
     /*
-     * This method is saving a new artist to the
+     * This method is saving a new studio to the
      * Firebase Realtime Database
      * */
     private void addStudio() {
@@ -122,13 +122,13 @@ public class StudioActivity extends AppCompatActivity {
         if (!TextUtils.isEmpty(number)) {
 
             //getting a unique id using push().getKey() method
-            //it will create a unique id and we will use it as the Primary Key for our Artist
+            //it will create a unique id and we will use it as the Primary Key for our Studio
             String id = myRef.push().getKey();
 
-            //creating an Artist Object
+            //creating a studio Object
             Studio studio = new Studio(id, number, name);
 
-            //Saving the Artist
+            //Saving the studio
             myRef.child(id).setValue(studio);
 
             //setting edittext to blank again
