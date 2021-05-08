@@ -2,7 +2,6 @@ package com.example.radiomonastir.Adapters;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +13,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.radiomonastir.FicheIncidentActivity;
 import com.example.radiomonastir.Models.Equipement;
 import com.example.radiomonastir.R;
 import com.google.firebase.database.DatabaseReference;

@@ -14,7 +14,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.radiomonastir.FicheIncidentActivity;
+import com.example.radiomonastir.ReformerFicheActivity;
 import com.example.radiomonastir.Models.Equipement;
 import com.example.radiomonastir.R;
 import com.google.firebase.database.DatabaseReference;
@@ -43,7 +43,7 @@ public class reformer_equipementAdapter extends RecyclerView.Adapter<reformer_eq
         reformer_equipementViewHolder.textView25.setText(reformer.getEquipementTtype());
         reformer_equipementViewHolder.textView26.setText(reformer.getEquipementNumserie());
         reformer_equipementViewHolder.item_reformer.setOnClickListener((view) -> {
-            Intent intent = new Intent(view.getContext(), FicheIncidentActivity.class);
+            Intent intent = new Intent(view.getContext(), ReformerFicheActivity.class);
             intent.putExtra("id", reformer.getEquipepmentId());
             intent.putExtra("nom", reformer.getEquipementNnom());
             intent.putExtra("type", reformer.getEquipementTtype());

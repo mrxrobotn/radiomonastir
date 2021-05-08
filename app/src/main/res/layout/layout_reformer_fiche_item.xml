@@ -4,20 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cl_ficheincident"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:layout_margin="5dp">
+
+    <TextView
+        android:id="@+id/textView61"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Nom"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextDate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/editTextDate"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
         android:text="Date"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/textArea_Panne"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView61" />
 
     <TextView
         android:id="@+id/textArea_Panne"
@@ -27,6 +39,7 @@
         android:textSize="21sp"
         app:layout_constraintBottom_toTopOf="@+id/textArea_Observation"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextDate" />
 
@@ -39,6 +52,7 @@
         android:textSize="21sp"
         app:layout_constraintBottom_toTopOf="@+id/divider5"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textArea_Panne" />
 
@@ -46,8 +60,10 @@
         android:id="@+id/divider5"
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:layout_marginTop="7dp"
         android:background="?android:attr/listDivider"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textArea_Observation" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,10 +9,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.radiomonastir.R;
 
-public class FicheIncidentViewHolder extends RecyclerView.ViewHolder{
+public class ReformerFicheViewHolder extends RecyclerView.ViewHolder{
     public TextView editTextDate, textArea_Panne, textArea_Observation;
     public ConstraintLayout cl_ficheincident;
-    public FicheIncidentViewHolder (View itemView){
+    public ReformerFicheViewHolder(View itemView){
         super(itemView);
         editTextDate = (TextView) itemView.findViewById(R.id.editTextDate);
         textArea_Panne = (TextView) itemView.findViewById(R.id.textArea_Panne);

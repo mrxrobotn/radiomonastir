@@ -13,7 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.radiomonastir.Adapters.FicheIncidentAdapter;
+import com.example.radiomonastir.Adapters.ReformerFicheAdapter;
 import com.example.radiomonastir.Models.FicheIncident;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class fiche_incident_celluleActivity extends AppCompatActivity {
-    EditText editTextTextPersonName10, editTextTextPersonName11, editTextTextPersonName12;
+    EditText editTextDate2, editTextTextPersonName10, editTextTextPersonName11, editTextTextPersonName12;
     Button button10;
     RecyclerView recyclerView5;
 
@@ -41,6 +41,7 @@ public class fiche_incident_celluleActivity extends AppCompatActivity {
         TextView tv2 = (TextView) findViewById(R.id.textView37);
         TextView tv3 = (TextView) findViewById(R.id.textView38);
         editTextTextPersonName10 = (EditText) findViewById(R.id.editTextTextPersonName10);
+        editTextDate2 = (EditText) findViewById(R.id.editTextDate2);
         editTextTextPersonName11 = (EditText) findViewById(R.id.editTextTextPersonName11);
         editTextTextPersonName12 = (EditText) findViewById(R.id.editTextTextPersonName12);
         button10 = (Button) findViewById(R.id.button10);
@@ -65,12 +66,13 @@ public class fiche_incident_celluleActivity extends AppCompatActivity {
         button10.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                String date = editTextTextPersonName10.getText().toString().trim();
+                String nom = editTextTextPersonName10.getText().toString().trim();
+                String date = editTextDate2.getText().toString().trim();
                 String panne = editTextTextPersonName11.getText().toString().trim();
                 String observation = editTextTextPersonName12.getText().toString().trim();
                 if (!TextUtils.isEmpty(date) && !TextUtils.isEmpty(panne) && !TextUtils.isEmpty(observation)){
                     String id = myRef.push().getKey();
-                    FicheIncident ficheCell= new FicheIncident(id, date, panne, observation);
+                    FicheIncident ficheCell= new FicheIncident(id, nom,date, panne, observation);
                     myRef.child(id).setValue(ficheCell);
                     editTextTextPersonName10.setText("");
                     editTextTextPersonName11.setText("");
@@ -95,8 +97,8 @@ public class fiche_incident_celluleActivity extends AppCompatActivity {
                     FicheIncident ficheIncident = postSnapshot.getValue(FicheIncident.class);
                     ficheCellList.add(ficheIncident);
                 }
-                FicheIncidentAdapter ficheIncidentAdapter = new FicheIncidentAdapter(fiche_incident_celluleActivity.this, ficheCellList);
-                recyclerView5.setAdapter(ficheIncidentAdapter);
+                ReformerFicheAdapter reformerFicheAdapter = new ReformerFicheAdapter(fiche_incident_celluleActivity.this, ficheCellList);
+                recyclerView5.setAdapter(reformerFicheAdapter);
             }
 
             @Override

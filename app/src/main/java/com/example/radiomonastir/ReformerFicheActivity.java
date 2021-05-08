@@ -13,10 +13,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.radiomonastir.Adapters.FicheIncidentAdapter;
-import com.example.radiomonastir.Adapters.ServeurAdapter;
+import com.example.radiomonastir.Adapters.ReformerFicheAdapter;
 import com.example.radiomonastir.Models.FicheIncident;
-import com.example.radiomonastir.Models.Serveur;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,8 +24,8 @@ import com.google.firebase.database.ValueEventListener;;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FicheIncidentActivity extends AppCompatActivity {
-    EditText editTextDate, textArea_Panne, textArea_Observation;
+public class ReformerFicheActivity extends AppCompatActivity {
+    EditText editTextTextPersonName16,editTextDate, textArea_Panne, textArea_Observation;
     Button button6;
     RecyclerView recyclerView4;
 
@@ -38,11 +36,12 @@ public class FicheIncidentActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fiche_incident);
+        setContentView(R.layout.activity_reformer_fiche);
 
         TextView tv1 = (TextView) findViewById(R.id.textView18);
         TextView tv2 = (TextView) findViewById(R.id.textView19);
         TextView tv3 = (TextView) findViewById(R.id.textView20);
+        editTextTextPersonName16 = (EditText) findViewById(R.id.editTextTextPersonName16);
         editTextDate = (EditText) findViewById(R.id.editTextDate);
         textArea_Panne = (EditText) findViewById(R.id.textArea_Panne);
         textArea_Observation = (EditText) findViewById(R.id.textArea_Observation);
@@ -67,20 +66,22 @@ public class FicheIncidentActivity extends AppCompatActivity {
         button6.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+                String nom = editTextTextPersonName16.getText().toString().trim();
                 String date = editTextDate.getText().toString().trim();
                 String panne = textArea_Panne.getText().toString().trim();
                 String observation = textArea_Observation.getText().toString().trim();
-                if (!TextUtils.isEmpty(date) && !TextUtils.isEmpty(panne) && !TextUtils.isEmpty(observation)){
+                if (!TextUtils.isEmpty(nom) && !TextUtils.isEmpty(date) && !TextUtils.isEmpty(panne) && !TextUtils.isEmpty(observation)){
                     String id = myRef.push().getKey();
-                    FicheIncident ficheIncident= new FicheIncident(id, date, panne, observation);
+                    FicheIncident ficheIncident= new FicheIncident(id, nom, date, panne, observation);
                     myRef.child(id).setValue(ficheIncident);
+                    editTextTextPersonName16.setText("");
                     editTextDate.setText("");
                     textArea_Panne.setText("");
                     textArea_Observation.setText("");
-                    Toast.makeText(FicheIncidentActivity.this,"Fiche Ajouter",Toast.LENGTH_LONG).show();
+                    Toast.makeText(ReformerFicheActivity.this,"Fiche Ajouter",Toast.LENGTH_LONG).show();
                 }
                 else {
-                    Toast.makeText(FicheIncidentActivity.this,"Erreur d'ajout",Toast.LENGTH_LONG).show();
+                    Toast.makeText(ReformerFicheActivity.this,"Erreur d'ajout",Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -97,13 +98,13 @@ public class FicheIncidentActivity extends AppCompatActivity {
                     FicheIncident ficheIncident = postSnapshot.getValue(FicheIncident.class);
                     ficheIncidentList.add(ficheIncident);
                 }
-                FicheIncidentAdapter ficheIncidentAdapter = new FicheIncidentAdapter(FicheIncidentActivity.this, ficheIncidentList);
-                recyclerView4.setAdapter(ficheIncidentAdapter);
+                ReformerFicheAdapter reformerFicheAdapter = new ReformerFicheAdapter(ReformerFicheActivity.this, ficheIncidentList);
+                recyclerView4.setAdapter(reformerFicheAdapter);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(FicheIncidentActivity.this, "failed", Toast.LENGTH_LONG);
+                Toast.makeText(ReformerFicheActivity.this, "failed", Toast.LENGTH_LONG);
             }
         });
     }

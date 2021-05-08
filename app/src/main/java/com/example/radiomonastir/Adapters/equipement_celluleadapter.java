@@ -14,9 +14,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.radiomonastir.CelluleEquipementActivity;
-import com.example.radiomonastir.FicheIncidentActivity;
-import com.example.radiomonastir.Models.Cellule;
 import com.example.radiomonastir.Models.Equipement;
 import com.example.radiomonastir.R;
 import com.example.radiomonastir.fiche_incident_celluleActivity;
