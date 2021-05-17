@@ -59,9 +59,12 @@ public class ReformerFicheActivity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView4.setLayoutManager(linearLayoutManager);
         recyclerView4.setHasFixedSize(true);
+        String id= getIntent().getStringExtra("id");
+        String nom= getIntent().getStringExtra("nom");
+
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        myRef= database.getReference("fiches_incident/Equipement/magasin");
+        myRef= database.getReference("equipements/"+id+"/fiches_incident");
 
         button6.setOnClickListener(new View.OnClickListener(){
             @Override

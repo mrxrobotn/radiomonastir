@@ -35,6 +35,7 @@ public class fiche_cellule_equipAdapter  extends RecyclerView.Adapter<fiche_cell
     @Override
     public void onBindViewHolder(@NonNull fiche_cellule_equipViewHolder fiche_cellule_equipViewHolder, final int i) {
         FicheIncident ficheCell= ficheCellList.get(i);
+        fiche_cellule_equipViewHolder.textView39.setText(ficheCell.getFichenomtech());
        fiche_cellule_equipViewHolder.textView42.setText(ficheCell.getFicheDate());
         fiche_cellule_equipViewHolder.textView43.setText(ficheCell.getFichePanne());
         fiche_cellule_equipViewHolder.textView44.setText(ficheCell.getFicheObservation());

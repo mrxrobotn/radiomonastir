@@ -2,22 +2,20 @@ package com.example.radiomonastir.Models;
 
 public class FicheIncident {
     private String ficheId;
-    private String ficheNom;
     private String ficheDate;
     private String fichePanne;
     private String ficheObservation;
+    private String fichenomtech;
 
-
-    public FicheIncident(String ficheNom, String ficheId, String ficheDate, String fichePanne, String ficheObservation) {
+    public FicheIncident(String ficheId, String ficheDate, String fichePanne, String ficheObservation) {
         this.ficheId = ficheId;
-        this.ficheNom = ficheNom;
         this.ficheDate = ficheDate;
         this.fichePanne = fichePanne;
         this.ficheObservation = ficheObservation;
-
+        this.fichenomtech=fichenomtech;
     }
 
-    public FicheIncident() {
+    public FicheIncident(String id, String nom, String date, String panne, String observation) {
     }
 
     public String getFicheId() {
@@ -26,14 +24,6 @@ public class FicheIncident {
 
     public void setFicheId(String ficheId) {
         this.ficheId = ficheId;
-    }
-
-    public String getFicheNom() {
-        return ficheNom;
-    }
-
-    public void setFicheNom(String ficheNom) {
-        this.ficheNom = ficheNom;
     }
 
     public String getFicheDate() {
@@ -59,4 +49,6 @@ public class FicheIncident {
     public void setFicheObservation(String ficheObservation) {
         this.ficheObservation = ficheObservation;
     }
+    public String getFichenomtech(){return fichenomtech;}
+    public void setFichenomtech(String fichenomtech){this.fichenomtech=fichenomtech;}
 }

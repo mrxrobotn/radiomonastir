@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.radiomonastir.Adapters.ReformerFicheAdapter;
+import com.example.radiomonastir.Adapters.fiche_cellule_equipAdapter;
 import com.example.radiomonastir.Models.FicheIncident;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -58,7 +59,7 @@ public class fiche_incident_celluleActivity extends AppCompatActivity {
         recyclerView5.setLayoutManager(linearLayoutManager);
         recyclerView5.setHasFixedSize(true);
         String id= getIntent().getStringExtra("id");
-    String nom= getIntent().getStringExtra("nom");
+        String nom= getIntent().getStringExtra("nom");
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         myRef= database.getReference("equipements/"+id+"/fiches_incident");
@@ -97,8 +98,8 @@ public class fiche_incident_celluleActivity extends AppCompatActivity {
                     FicheIncident ficheIncident = postSnapshot.getValue(FicheIncident.class);
                     ficheCellList.add(ficheIncident);
                 }
-                ReformerFicheAdapter reformerFicheAdapter = new ReformerFicheAdapter(fiche_incident_celluleActivity.this, ficheCellList);
-                recyclerView5.setAdapter(reformerFicheAdapter);
+               fiche_cellule_equipAdapter fiche_cellule_equipAdapter= new fiche_cellule_equipAdapter(fiche_incident_celluleActivity.this, ficheCellList);
+                recyclerView5.setAdapter(fiche_cellule_equipAdapter);
             }
 
             @Override
