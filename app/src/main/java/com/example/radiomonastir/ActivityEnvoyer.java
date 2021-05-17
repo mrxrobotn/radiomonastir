@@ -1,7 +1,10 @@
 package com.example.radiomonastir;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -26,6 +29,8 @@ public class ActivityEnvoyer  extends AppCompatActivity {
     List<Serveur> serveurList =new ArrayList<>();
     List<Cellule> celluleList =new ArrayList<>();
     Spinner spinnerServeur,spinnerCellule,spinnerStudio;
+    CheckBox checkBox, checkBox2;
+    Button button3, button7;
     DatabaseReference myRefCell,myRefStudio,myRefserveur;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,13 +38,25 @@ public class ActivityEnvoyer  extends AppCompatActivity {
         setContentView(R.layout.activity_envoyer);
         spinnerServeur=findViewById(R.id.spinner3);
         spinnerCellule=findViewById(R.id.spinner4);
-        spinnerStudio=findViewById(R.id.spinner);
+        checkBox=findViewById(R.id.checkBox);
+        checkBox2=findViewById(R.id.checkBox2);
+        button3=findViewById(R.id.button3);
+        button7=findViewById(R.id.button7);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         myRefCell= database.getReference("cellules");
 
         myRefStudio= database.getReference("studio");
         myRefserveur= database.getReference("serveur");
 
+
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (checkBox.isChecked()){
+
+                }
+            }
+        });
 
 
     }

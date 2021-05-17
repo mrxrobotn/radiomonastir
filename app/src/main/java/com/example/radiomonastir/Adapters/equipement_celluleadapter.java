@@ -45,6 +45,7 @@ public class equipement_celluleadapter extends RecyclerView.Adapter<cellule_equi
         Equipement cellule = cellule_equipementlist.get(i);
         cellule_equipementviewHolder.textView21.setText(cellule.getEquipementNnom());
         cellule_equipementviewHolder.textView22.setText(cellule.getEquipementTtype());
+        cellule_equipementviewHolder.textView23.setText(cellule.getEquipementNumserie());
         cellule_equipementviewHolder.constraintequipementcellule.setOnClickListener((view) -> {
             Intent intent = new Intent(view.getContext(), fiche_incident_celluleActivity.class);
             intent.putExtra("id",cellule.getEquipepmentId());

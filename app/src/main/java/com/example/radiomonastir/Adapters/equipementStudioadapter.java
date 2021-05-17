@@ -48,6 +48,7 @@ public class equipementStudioadapter  extends RecyclerView.Adapter<equipementStu
         Equipement studio = studio_equipementlist.get(i);
         equipementStudioViewHolder.StudioEquipementName.setText(studio.getEquipementNnom());
         equipementStudioViewHolder.StudioEquipementType.setText(studio.getEquipementTtype());
+        equipementStudioViewHolder.StudioEquipementNS.setText(studio.getEquipementNumserie());
         equipementStudioViewHolder.constraint_StudioEquipement.setOnClickListener((view) -> {
             Intent intent = new Intent(view.getContext(), equipementStudioActivity.class);
             intent.putExtra("id", studio.getEquipepmentId());
@@ -64,7 +65,22 @@ public class equipementStudioadapter  extends RecyclerView.Adapter<equipementStu
                 return false;
             }
         });
+        equipementStudioViewHolder.imageView14.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                envoyer();
+            }
+        });
 
+    }
+
+    private void envoyer() {
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        final View dialogView = inflater.inflate(R.layout.activity_envoyer, null);
+        dialogBuilder.setView(dialogView);
+        final AlertDialog b = dialogBuilder.create();
+        b.show();
     }
 
     @Override
