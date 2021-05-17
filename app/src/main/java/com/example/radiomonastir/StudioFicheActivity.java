@@ -70,11 +70,12 @@ public class StudioFicheActivity extends AppCompatActivity {
                 String date = editTextDate3.getText().toString().trim();
                 String panne = editTextTextPersonName14.getText().toString().trim();
                 String observation = editTextTextPersonName15.getText().toString().trim();
-                if (!TextUtils.isEmpty(date) && !TextUtils.isEmpty(panne) && !TextUtils.isEmpty(observation)) {
+                if (!TextUtils.isEmpty(nom) && !TextUtils.isEmpty(date) && !TextUtils.isEmpty(panne) && !TextUtils.isEmpty(observation)) {
                     String id = myRef.push().getKey();
                     FicheIncident ficheStudio = new FicheIncident(id, nom, date, panne, observation);
                     myRef.child(id).setValue(ficheStudio);
                     editTextTextPersonName13.setText("");
+                    editTextDate3.setText("");
                     editTextTextPersonName14.setText("");
                     editTextTextPersonName15.setText("");
                     Toast.makeText(StudioFicheActivity.this, "Fiche Ajouter", Toast.LENGTH_LONG).show();

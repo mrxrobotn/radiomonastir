@@ -61,6 +61,7 @@
         android:id="@+id/recyclerViewStudios"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/textView1" />
+        android:layout_below="@+id/textView1"
+        android:layout_margin="10dp"/>
 
 </RelativeLayout>

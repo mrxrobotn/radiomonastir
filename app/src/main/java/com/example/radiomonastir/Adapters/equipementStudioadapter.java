@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.radiomonastir.Models.Equipement;
 import com.example.radiomonastir.R;
+import com.example.radiomonastir.StudioFicheActivity;
 import com.example.radiomonastir.equipementStudioActivity;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -50,7 +51,7 @@ public class equipementStudioadapter  extends RecyclerView.Adapter<equipementStu
         equipementStudioViewHolder.StudioEquipementType.setText(studio.getEquipementTtype());
         equipementStudioViewHolder.StudioEquipementNS.setText(studio.getEquipementNumserie());
         equipementStudioViewHolder.constraint_StudioEquipement.setOnClickListener((view) -> {
-            Intent intent = new Intent(view.getContext(), equipementStudioActivity.class);
+            Intent intent = new Intent(view.getContext(), StudioFicheActivity.class);
             intent.putExtra("id", studio.getEquipepmentId());
             intent.putExtra("nom", studio.getEquipementNnom());
             intent.putExtra("type", studio.getEquipementTtype());

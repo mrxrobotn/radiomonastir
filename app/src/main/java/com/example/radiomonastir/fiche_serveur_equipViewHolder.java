@@ -7,14 +7,14 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class fiche_serveur_equipViewHolder  extends RecyclerView.ViewHolder {
-    public TextView textView73,textView74,textView75,textView76;
+    public TextView editTextTextPersonName17, editTextDate4, editTextTextMultiLine3, editTextTextMultiLine4;
     public ConstraintLayout contraintficheserveur;
     public fiche_serveur_equipViewHolder (View itemView){
         super(itemView);
-        textView73 = (TextView) itemView.findViewById(R.id.textView73);
-        textView74 = (TextView) itemView.findViewById(R.id.textView74);
-        textView75 = (TextView) itemView.findViewById(R.id.textView75);
-        textView76=(TextView)itemView.findViewById(R.id.textView76);
+        editTextTextPersonName17 = (TextView) itemView.findViewById(R.id.editTextTextPersonName17);
+        editTextDate4 = (TextView) itemView.findViewById(R.id.editTextDate4);
+        editTextTextMultiLine3 = (TextView) itemView.findViewById(R.id.editTextTextMultiLine3);
+        editTextTextMultiLine4=(TextView)itemView.findViewById(R.id.editTextTextMultiLine4);
         contraintficheserveur = (ConstraintLayout)itemView.findViewById(R.id.contraintficheserveur);
 
     }

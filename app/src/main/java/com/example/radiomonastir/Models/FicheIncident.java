@@ -7,15 +7,15 @@ public class FicheIncident {
     private String ficheObservation;
     private String fichenomtech;
 
-    public FicheIncident(String ficheId, String ficheDate, String fichePanne, String ficheObservation) {
+    public FicheIncident(String ficheId, String ficheDate, String fichePanne, String ficheObservation, String fichenomtech) {
         this.ficheId = ficheId;
         this.ficheDate = ficheDate;
         this.fichePanne = fichePanne;
         this.ficheObservation = ficheObservation;
-        this.fichenomtech=fichenomtech;
+        this.fichenomtech = fichenomtech;
     }
 
-    public FicheIncident(String id, String nom, String date, String panne, String observation) {
+    public FicheIncident() {
     }
 
     public String getFicheId() {
@@ -49,6 +49,12 @@ public class FicheIncident {
     public void setFicheObservation(String ficheObservation) {
         this.ficheObservation = ficheObservation;
     }
-    public String getFichenomtech(){return fichenomtech;}
-    public void setFichenomtech(String fichenomtech){this.fichenomtech=fichenomtech;}
+
+    public String getFichenomtech() {
+        return fichenomtech;
+    }
+
+    public void setFichenomtech(String fichenomtech) {
+        this.fichenomtech = fichenomtech;
+    }
 }

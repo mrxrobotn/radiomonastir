@@ -33,10 +33,10 @@ public class fiche_serveur_equipAdapter  extends RecyclerView.Adapter<fiche_serv
     @Override
     public void onBindViewHolder(@NonNull fiche_serveur_equipViewHolder fiche_serveur_equipViewHolder, final int i) {
         FicheIncident ficheServeur = ficheServeurList.get(i);
-        fiche_serveur_equipViewHolder.textView73.setText(ficheServeur.getFichenomtech());
-        fiche_serveur_equipViewHolder.textView74.setText(ficheServeur.getFicheDate());
-        fiche_serveur_equipViewHolder.textView75.setText(ficheServeur.getFichePanne());
-        fiche_serveur_equipViewHolder.textView76.setText(ficheServeur.getFicheObservation());
+        fiche_serveur_equipViewHolder.editTextTextPersonName17.setText(ficheServeur.getFichenomtech());
+        fiche_serveur_equipViewHolder.editTextDate4.setText(ficheServeur.getFicheDate());
+        fiche_serveur_equipViewHolder.editTextTextMultiLine3.setText(ficheServeur.getFichePanne());
+        fiche_serveur_equipViewHolder.editTextTextMultiLine4.setText(ficheServeur.getFicheObservation());
 
 
     }

@@ -14,7 +14,6 @@ import com.example.radiomonastir.R;
 import java.util.List;
 
 public class ReformerFicheAdapter extends RecyclerView.Adapter<ReformerFicheViewHolder>{
-
     private Context context;
     private List<FicheIncident> ficheIncidentList;
     public ReformerFicheAdapter(Context context, List<FicheIncident> ficheIncident) {
@@ -32,6 +31,7 @@ public class ReformerFicheAdapter extends RecyclerView.Adapter<ReformerFicheView
     @Override
     public void onBindViewHolder(@NonNull ReformerFicheViewHolder reformerFicheViewHolder, final int i) {
         FicheIncident ficheIncident = ficheIncidentList.get(i);
+        reformerFicheViewHolder.textView61.setText(ficheIncident.getFichenomtech());
         reformerFicheViewHolder.editTextDate.setText(ficheIncident.getFicheDate());
         reformerFicheViewHolder.textArea_Panne.setText(ficheIncident.getFichePanne());
         reformerFicheViewHolder.textArea_Observation.setText(ficheIncident.getFicheObservation());

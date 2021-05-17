@@ -3,6 +3,7 @@ package com.example.radiomonastir.Adapters;
 import android.app.AlertDialog;
 import android.content.Context;
 
+import android.content.Intent;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.radiomonastir.Models.Equipement;
 import com.example.radiomonastir.R;
+import com.example.radiomonastir.ServeurFicheActivity;
+import com.example.radiomonastir.StudioFicheActivity;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -45,7 +48,13 @@ public class ServeurEquipementAdapter extends RecyclerView.Adapter<ServeurEquipe
         Equipement serveurEquipement = serv_equip_list.get(i);
         serveurEquipementViewHolder.textView22.setText(serveurEquipement.getEquipementTtype());
         serveurEquipementViewHolder.textView23.setText(serveurEquipement.getEquipementNumserie());
-
+        serveurEquipementViewHolder.cl_serverequipement.setOnClickListener((view) -> {
+            Intent intent = new Intent(view.getContext(), ServeurFicheActivity.class);
+            intent.putExtra("nom", serveurEquipement.getEquipementNnom());
+            intent.putExtra("type", serveurEquipement.getEquipementTtype());
+            intent.putExtra("numserie", serveurEquipement.getEquipementNumserie());
+            context.startActivity(intent);
+        });
         serveurEquipementViewHolder.cl_serverequipement.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {

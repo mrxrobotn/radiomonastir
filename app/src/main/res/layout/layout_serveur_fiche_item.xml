@@ -7,53 +7,53 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/textView73"
+        android:id="@+id/editTextTextPersonName17"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="5dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/textView74"
+        android:hint="Nom"
+        app:layout_constraintBottom_toTopOf="@+id/editTextDate4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView74"
+        android:id="@+id/editTextDate4"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:text="TextView"
+        android:hint="Date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView73" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName17" />
 
     <TextView
-        android:id="@+id/textView75"
+        android:id="@+id/editTextTextMultiLine3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/textView76"
+        android:hint="Panne"
+        app:layout_constraintBottom_toTopOf="@+id/editTextTextMultiLine4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView74" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextDate4" />
 
     <TextView
-        android:id="@+id/textView76"
+        android:id="@+id/editTextTextMultiLine4"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginBottom="6dp"
-        android:text="TextView"
+        android:hint="Observation"
         app:layout_constraintBottom_toTopOf="@+id/divider9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView75" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine3" />
 
     <View
         android:id="@+id/divider9"
@@ -67,5 +67,5 @@
         android:background="?android:attr/listDivider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView76" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine4" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -21,18 +21,19 @@ public class fiche_studio_equipAdapter extends RecyclerView.Adapter<fiche_studio
         this.ficheStudioList = ficheStudio;
 
     }
+    @NonNull
     @Override
     public fiche_studio_equipViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, final int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.layout_studio_equipement_list, viewGroup, false);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.layout_studio_fiche_list, viewGroup, false);
         return new fiche_studio_equipViewHolder(view);
     }
     @Override
     public void onBindViewHolder(@NonNull fiche_studio_equipViewHolder fiche_studio_equipViewHolder, final int i) {
         FicheIncident fichestudio= ficheStudioList.get(i);
-        fiche_studio_equipViewHolder.textView56.setText(fichestudio.getFichenomtech());
-       fiche_studio_equipViewHolder.textView57.setText(fichestudio.getFicheDate());
-       fiche_studio_equipViewHolder.textView58.setText(fichestudio.getFichePanne());
-        fiche_studio_equipViewHolder.textView59.setText(fichestudio.getFicheObservation());
+        fiche_studio_equipViewHolder.editTextTextPersonName13.setText(fichestudio.getFichenomtech());
+        fiche_studio_equipViewHolder.editTextDate3.setText(fichestudio.getFicheDate());
+        fiche_studio_equipViewHolder.editTextTextPersonName14.setText(fichestudio.getFichePanne());
+        fiche_studio_equipViewHolder.editTextTextPersonName15.setText(fichestudio.getFicheObservation());
 
 
 

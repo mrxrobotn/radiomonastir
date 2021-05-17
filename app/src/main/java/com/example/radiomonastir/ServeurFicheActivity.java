@@ -13,7 +13,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.radiomonastir.Adapters.fiche_cellule_equipAdapter;
 import com.example.radiomonastir.Adapters.fiche_serveur_equipAdapter;
 import com.example.radiomonastir.Models.FicheIncident;
 import com.google.firebase.database.DataSnapshot;
@@ -38,9 +37,9 @@ public class ServeurFicheActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_serveur_fiche);
-        TextView tv1 = (TextView) findViewById(R.id.textView36);
-        TextView tv2 = (TextView) findViewById(R.id.textView37);
-        TextView tv3 = (TextView) findViewById(R.id.textView38);
+        TextView tv1 = (TextView) findViewById(R.id.textView66);
+        TextView tv2 = (TextView) findViewById(R.id.textView67);
+        TextView tv3 = (TextView) findViewById(R.id.textView68);
         editTextTextPersonName17 = (EditText) findViewById(R.id.editTextTextPersonName17);
         editTextDate4 = (EditText) findViewById(R.id.editTextDate4);
         editTextTextMultiLine3 = (EditText) findViewById(R.id.editTextTextMultiLine3);
@@ -70,11 +69,12 @@ public class ServeurFicheActivity extends AppCompatActivity {
                 String date = editTextDate4.getText().toString().trim();
                 String panne = editTextTextMultiLine3.getText().toString().trim();
                 String observation = editTextTextMultiLine4.getText().toString().trim();
-                if (!TextUtils.isEmpty(date) && !TextUtils.isEmpty(panne) && !TextUtils.isEmpty(observation)) {
+                if (!TextUtils.isEmpty(nom) && !TextUtils.isEmpty(date) && !TextUtils.isEmpty(panne) && !TextUtils.isEmpty(observation)) {
                     String id = myRef.push().getKey();
                     FicheIncident ficheServeur = new FicheIncident(id, nom, date, panne, observation);
                     myRef.child(id).setValue(ficheServeur);
                     editTextTextPersonName17.setText("");
+                    editTextDate4.setText("");
                     editTextTextMultiLine3.setText("");
                     editTextTextMultiLine4.setText("");
                     Toast.makeText(ServeurFicheActivity.this, "Fiche Ajouter", Toast.LENGTH_LONG).show();
