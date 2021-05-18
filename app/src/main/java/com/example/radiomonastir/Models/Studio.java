@@ -31,6 +31,6 @@ public class Studio {
     }
     @Override
     public String toString() {
-        return studioName ;
+        return studioNumber ;
     }
 }
