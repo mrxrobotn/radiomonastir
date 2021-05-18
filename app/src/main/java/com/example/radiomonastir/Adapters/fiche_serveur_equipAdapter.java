@@ -17,13 +17,12 @@ import java.util.List;
 public class fiche_serveur_equipAdapter  extends RecyclerView.Adapter<fiche_serveur_equipViewHolder> {
     private Context context;
     private List<FicheIncident> ficheServeurList;
-
     public fiche_serveur_equipAdapter(Context context, List<FicheIncident> ficheServeur) {
         this.context = context;
         this.ficheServeurList = ficheServeur;
 
     }
-
+    @NonNull
     @Override
     public fiche_serveur_equipViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, final int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.layout_serveur_fiche_item, viewGroup, false);
