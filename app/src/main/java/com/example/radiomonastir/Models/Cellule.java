@@ -27,4 +27,8 @@ public class Cellule {
     public void setCelluleName(String celluleName) {
         this.celluleName = celluleName;
     }
+    @Override
+    public String toString() {
+        return celluleName;
+    }
 }

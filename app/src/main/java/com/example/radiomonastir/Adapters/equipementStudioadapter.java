@@ -14,6 +14,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.radiomonastir.ActivityEnvoyer;
 import com.example.radiomonastir.Models.Equipement;
 import com.example.radiomonastir.R;
 import com.example.radiomonastir.StudioFicheActivity;
@@ -76,12 +77,13 @@ public class equipementStudioadapter  extends RecyclerView.Adapter<equipementStu
     }
 
     private void envoyer() {
-        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        final View dialogView = inflater.inflate(R.layout.activity_envoyer, null);
-        dialogBuilder.setView(dialogView);
-        final AlertDialog b = dialogBuilder.create();
-        b.show();
+//        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
+//        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//        final View dialogView = inflater.inflate(R.layout.activity_envoyer, null);
+//        dialogBuilder.setView(dialogView);
+//        final AlertDialog b = dialogBuilder.create();
+//        b.show();
+        context.startActivity(new Intent(context, ActivityEnvoyer.class));
     }
 
     @Override

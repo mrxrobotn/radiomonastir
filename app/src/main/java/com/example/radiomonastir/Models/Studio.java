@@ -29,4 +29,8 @@ public class Studio {
     public String getStudioName() {
         return studioName;
     }
+    @Override
+    public String toString() {
+        return studioName ;
+    }
 }

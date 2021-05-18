@@ -22,6 +22,7 @@
         <activity android:name=".equipementStudioActivity" />
         <activity android:name=".CelluleEquipementActivity" />
         <activity android:name=".CelluleActivity" />
+        <activity android:name=".ActivityEnvoyer" />
         <activity android:name=".StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

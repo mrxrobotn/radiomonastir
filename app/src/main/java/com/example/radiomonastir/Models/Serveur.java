@@ -27,4 +27,9 @@ public class Serveur {
     public void setServeurName(String serveurName) {
         this.serveurName = serveurName;
     }
+
+    @Override
+    public String toString() {
+        return serveurName ;
+    }
 }
