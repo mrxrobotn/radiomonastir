@@ -46,7 +46,7 @@ public class fiche_incident_celluleActivity extends AppCompatActivity {
         editTextTextPersonName11 = (EditText) findViewById(R.id.editTextTextPersonName11);
         editTextTextPersonName12 = (EditText) findViewById(R.id.editTextTextPersonName12);
         button10 = (Button) findViewById(R.id.button10);
-        recyclerView5 = (RecyclerView) findViewById(R.id.recyclerView5);
+        recyclerView5 = (RecyclerView) findViewById(R.id.recyclerView2);
 
         Bundle bundle=getIntent().getExtras();
         String s1=bundle.getString("nom");

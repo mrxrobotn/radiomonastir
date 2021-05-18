@@ -17,6 +17,11 @@ public class Equipement {
         this.equipementParentId = equipementParentId;
     }
 
+    public Equipement(String equipementPlace, String equipementParentId) {
+        this.equipementPlace = equipementPlace;
+        this.equipementParentId = equipementParentId;
+    }
+
     public Equipement(String equipepmentId, String equipementNnom, String equipementTtype, String equipementNumserie, String equipementPlace) {
         this.equipepmentId = equipepmentId;
         this.equipementNnom = equipementNnom;

@@ -14,6 +14,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.radiomonastir.ActivityEnvoyer;
 import com.example.radiomonastir.Models.Equipement;
 import com.example.radiomonastir.R;
 import com.example.radiomonastir.fiche_incident_celluleActivity;
@@ -62,8 +63,26 @@ public class equipement_celluleadapter extends RecyclerView.Adapter<cellule_equi
                 return false;
             }
         });
+        cellule_equipementviewHolder.imageView10.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(context, ActivityEnvoyer.class);
+                intent.putExtra("id",cellule.getEquipepmentId());
+                intent.putExtra("nom",cellule.getEquipementNnom());
+                intent.putExtra("type",cellule.getEquipementTtype());
+                intent.putExtra("numserie",cellule.getEquipementNumserie());
+                context.startActivity(intent);
+                context.startActivity(intent);
+            }
+        });
+
 
     }
+
+
+
+
     @Override
     public int getItemCount() {
         return cellule_equipementlist.size();

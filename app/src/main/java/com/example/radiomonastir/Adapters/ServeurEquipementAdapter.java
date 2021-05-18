@@ -15,7 +15,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.radiomonastir.ActivityEnvoyer;
 import com.example.radiomonastir.Models.Equipement;
+import com.example.radiomonastir.Models.Serveur;
 import com.example.radiomonastir.R;
 import com.example.radiomonastir.ServeurFicheActivity;
 import com.example.radiomonastir.StudioFicheActivity;
@@ -58,8 +60,19 @@ public class ServeurEquipementAdapter extends RecyclerView.Adapter<ServeurEquipe
         serveurEquipementViewHolder.cl_serverequipement.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                showUpdateDeleteDialog(serveurEquipement.getEquipepmentId(),serveurEquipement.getEquipementTtype(),serveurEquipement.getEquipementNumserie());
+                showUpdateDeleteDialog(serveurEquipement.getEquipepmentId(), serveurEquipement.getEquipementTtype(), serveurEquipement.getEquipementNumserie());
                 return false;
+            }
+        });
+      serveurEquipementViewHolder.imageView13.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ActivityEnvoyer.class);
+                intent.putExtra("id", serveurEquipement.getEquipementNnom());
+                intent.putExtra("type", serveurEquipement.getEquipementTtype());
+                intent.putExtra("numserie", serveurEquipement.getEquipementNumserie());
+                context.startActivity(intent);
+                context.startActivity(intent);
             }
         });
     }

@@ -2,6 +2,7 @@ package com.example.radiomonastir;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -13,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.radiomonastir.Adapters.CelluleAdapter;
 import com.example.radiomonastir.Models.Cellule;
+import com.example.radiomonastir.Models.Equipement;
 import com.example.radiomonastir.Models.Serveur;
 import com.example.radiomonastir.Models.Studio;
 import com.google.firebase.database.DataSnapshot;
@@ -32,6 +34,11 @@ public class ActivityEnvoyer  extends AppCompatActivity {
     CheckBox checkBox, checkBox2;
     Button button3, button7;
     DatabaseReference myRefCell,myRefStudio,myRefserveur;
+    String ch = "";//studios  magasin  serveur  cellule
+    String idParent = "";
+    String id,nom,type,numserie;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,13 +56,36 @@ public class ActivityEnvoyer  extends AppCompatActivity {
         myRefStudio= database.getReference("studios");
         myRefserveur= database.getReference("serveurs");
 
+        nom=getIntent().getStringExtra("nom");
+        type=getIntent().getStringExtra("type");
+        numserie=getIntent().getStringExtra("numserie");
+        id=getIntent().getStringExtra("id");
 
+
+
+        button7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (checkBox.isChecked()){
+                    ch = "magasin";
 
                 }
+                else if (checkBox2.isChecked()){
+                    ch = "reformer";
+                }
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference myRef;
+                myRef= database.getReference("equipements");
+                Equipement equipement=  new Equipement(id,nom,type,numserie,ch,idParent);
+                myRef.child(id).setValue(equipement);
+               Toast.makeText(ActivityEnvoyer.this, "equipement déplacer avec succée", Toast.LENGTH_SHORT).show();
+
             }
         });
 
@@ -130,6 +160,48 @@ public class ActivityEnvoyer  extends AppCompatActivity {
                     Toast.makeText(ActivityEnvoyer.this, "failed", Toast.LENGTH_LONG);
                 }
             });
+        spinnerCellule.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                ch  = "cellule";
+                idParent  = celluleList.get(i).getCelluleId();
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+        spinnerStudio.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                ch  = "studios";
+                idParent  = studioList.get(i).getStudioId();
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+        spinnerServeur.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                ch  = "serveur";
+                idParent  = serveurList.get(i).getServeurId();
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
     }
 

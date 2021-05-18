@@ -14,6 +14,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.radiomonastir.ActivityEnvoyer;
 import com.example.radiomonastir.ReformerFicheActivity;
 import com.example.radiomonastir.Models.Equipement;
 import com.example.radiomonastir.R;
@@ -58,10 +59,29 @@ public class reformer_equipementAdapter extends RecyclerView.Adapter<reformer_eq
                 return false;
             }
         });
+       reformer_equipementViewHolder.imageView12.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(context, ActivityEnvoyer.class);
+                intent.putExtra("id",reformer.getEquipepmentId());
+                intent.putExtra("nom",reformer.getEquipementNnom());
+                intent.putExtra("type",reformer.getEquipementTtype());
+                intent.putExtra("numserie",reformer.getEquipementNumserie());
+                context.startActivity(intent);
+                context.startActivity(intent);
+            }
+        });
+
+
+    }
+    @Override
+    public int getItemCount() {
+        return eqiupement_reformerlist.size();
+    }
 
 
 
-}
     private void showUpdateDeleteDialog(String reformerId, String reformernom, String reformertype, String reformerNumSerie) {
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -87,7 +107,7 @@ public class reformer_equipementAdapter extends RecyclerView.Adapter<reformer_eq
                 String type = TypeEquipement.getText().toString().trim();
                 String num_serie = NumSerie.getText().toString().trim();
                 if (!TextUtils.isEmpty(nom) && !TextUtils.isEmpty(type) && !TextUtils.isEmpty(num_serie)) {
-                    buttonUpdatereformer(reformerId,nom,type,num_serie);
+                    buttonUpdatereformer(reformerId, nom, type, num_serie);
                     b.dismiss();
                 }
             }
@@ -100,10 +120,6 @@ public class reformer_equipementAdapter extends RecyclerView.Adapter<reformer_eq
                 b.dismiss();
             }
         });
-    }
-    @Override
-    public int getItemCount() {
-        return eqiupement_reformerlist.size();
     }
 
     private boolean buttonDeletereformer(String id) {

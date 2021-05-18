@@ -70,21 +70,20 @@ public class equipementStudioadapter  extends RecyclerView.Adapter<equipementStu
         equipementStudioViewHolder.imageView14.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                envoyer();
+                Intent intent = new Intent(context, ActivityEnvoyer.class);
+                intent.putExtra("id", studio.getEquipepmentId());
+                intent.putExtra("nom", studio.getEquipementNnom());
+                intent.putExtra("type", studio.getEquipementTtype());
+                intent.putExtra("numserie", studio.getEquipementNumserie());
+                context.startActivity(intent);
+
             }
         });
 
+
+
     }
 
-    private void envoyer() {
-//        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
-//        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-//        final View dialogView = inflater.inflate(R.layout.activity_envoyer, null);
-//        dialogBuilder.setView(dialogView);
-//        final AlertDialog b = dialogBuilder.create();
-//        b.show();
-        context.startActivity(new Intent(context, ActivityEnvoyer.class));
-    }
 
     @Override
     public int getItemCount() {

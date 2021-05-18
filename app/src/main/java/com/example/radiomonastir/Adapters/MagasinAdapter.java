@@ -2,6 +2,7 @@ package com.example.radiomonastir.Adapters;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.radiomonastir.ActivityEnvoyer;
 import com.example.radiomonastir.Models.Equipement;
 import com.example.radiomonastir.R;
 import com.google.firebase.database.DatabaseReference;
@@ -51,6 +53,19 @@ public class MagasinAdapter extends RecyclerView.Adapter<MagasinViewHolder> {
             public boolean onLongClick(View view) {
                 showUpdateDeleteDialog(magasin.getEquipepmentId(),magasin.getEquipementNnom(),magasin.getEquipementTtype(),magasin.getEquipementNumserie());
                 return false;
+            }
+        });
+        magasinViewHolder.imageView11.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(context, ActivityEnvoyer.class);
+                intent.putExtra("id",magasin.getEquipepmentId());
+                intent.putExtra("nom",magasin.getEquipementNnom());
+                intent.putExtra("type",magasin.getEquipementTtype());
+                intent.putExtra("numserie",magasin.getEquipementNumserie());
+                context.startActivity(intent);
+                context.startActivity(intent);
             }
         });
     }
