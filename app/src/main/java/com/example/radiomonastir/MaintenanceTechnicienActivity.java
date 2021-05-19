@@ -5,18 +5,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 
 public class MaintenanceTechnicienActivity extends AppCompatActivity {
-    ImageButton imageButton9, imageButton10;
+    ImageView imageButton9, imageButton10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maintenance_technicien);
 
-        imageButton9 = (ImageButton)findViewById(R.id.imageButton9);
-        imageButton10 = (ImageButton)findViewById(R.id.imageButton10);
+        imageButton9 = (ImageView) findViewById(R.id.imageButton9);
+        imageButton10 = (ImageView) findViewById(R.id.imageButton10);
 
         imageButton9.setOnClickListener(new View.OnClickListener() {
             @Override
