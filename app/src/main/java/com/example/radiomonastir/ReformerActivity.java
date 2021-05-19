@@ -32,7 +32,7 @@ public class ReformerActivity extends AppCompatActivity {
     RecyclerView recyclerviewreformer;
 
     List<Equipement> eqiupement_reformerlist = new ArrayList<>();
-
+    String idreformer;
 
     DatabaseReference data;
 
@@ -40,6 +40,7 @@ public class ReformerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reformer);
+        idreformer = getIntent().getStringExtra("id");
 
         editTextTextPersonName7 = (EditText) findViewById(R.id.editTextTextPersonName7);
         editTextTextPersonName8 = (EditText) findViewById(R.id.editTextTextPersonName8);
@@ -63,7 +64,7 @@ public class ReformerActivity extends AppCompatActivity {
                 String num_serie = editTextTextPersonName9.getText().toString().trim();
                 if (!TextUtils.isEmpty(nom) && !TextUtils.isEmpty(type) && !TextUtils.isEmpty(num_serie)) {
                     String id = data.push().getKey();
-                    Equipement reformer = new Equipement(id, nom, type, num_serie, "reformer");
+                    Equipement reformer = new Equipement(id, nom, type, num_serie, "reformer",idreformer);
                     data.child(id).setValue(reformer);
                     editTextTextPersonName7.setText("");
                     editTextTextPersonName8.setText("");
@@ -87,7 +88,7 @@ public class ReformerActivity extends AppCompatActivity {
                 eqiupement_reformerlist.clear();
                 for (DataSnapshot postSnapshot : snapshot.getChildren()) {
                     Equipement equipement = postSnapshot.getValue(Equipement.class);
-                    if (equipement.getEquipementPlace().equals("reformer")) {
+                    if (equipement.getEquipementParentId() != null &&equipement.getEquipementParentId().equals(idreformer)) {
                         eqiupement_reformerlist.add(equipement);
                     }
                 }

@@ -6,14 +6,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 
 public class HomeAdminActivity extends AppCompatActivity {
-
+    private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_admin);
-
+        mAuth = FirebaseAuth.getInstance();
     }
 
     public void affichestudio(View view) {
@@ -26,7 +28,7 @@ public class HomeAdminActivity extends AppCompatActivity {
         });
     }
 
-    public void afficheplanification(View view) {
+    public void afficheplanificationadmin(View view) {
         findViewById(R.id.imageButton3).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,7 +48,7 @@ public class HomeAdminActivity extends AppCompatActivity {
         });
     }
 
-    public void affichemaintenance(View view) {
+    public void affichemaintenanceadmin(View view) {
         findViewById(R.id.imageButton7).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,5 +96,16 @@ public class HomeAdminActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    public void logout(View view) {
+        findViewById(R.id.imageView).setOnClickListener((new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(HomeAdminActivity.this, SignInActivity.class);
+                startActivity(intent);
+            }
+        }));
     }
 }
