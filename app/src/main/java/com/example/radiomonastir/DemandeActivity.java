@@ -54,7 +54,7 @@ public class DemandeActivity extends AppCompatActivity {
                     Demande demande= new Demande(id, demande_desc);
                     myRef.child(id).setValue(demande);
                     editTextTextMultiLine2.setText("");
-                    Toast.makeText(DemandeActivity.this,"Panne Envoyer",Toast.LENGTH_LONG).show();
+                    Toast.makeText(DemandeActivity.this,"Demande Envoyer",Toast.LENGTH_LONG).show();
                 }
                 else {
                     Toast.makeText(DemandeActivity.this,"Erreur!",Toast.LENGTH_LONG).show();
