@@ -12,42 +12,43 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginRight="20dp"
-        android:gravity="center">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
 
 
-    <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="wrap_content"
-        android:layout_height="62dp"
-        android:src="@drawable/home" />
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="wrap_content"
+                android:layout_height="62dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/home" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView3"
-        android:layout_marginTop="5dp"
-        android:gravity="center"
-        android:paddingLeft="130dp"
-        android:text="ACCEUIL"
-        android:textSize="28sp"
-        android:textStyle="bold" />
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/imageView7"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:text="ACCEUIL"
+                android:textSize="28sp"
+                android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/imageView18"
-            android:layout_width="52dp"
-            android:layout_height="48dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/logout"
-            android:layout_margin="15dp"
-            android:onClick="logout"/>
-    </RelativeLayout>
+            <ImageView
+                android:id="@+id/imageView18"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_alignRight="@id/imageView7"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:onClick="logout"
+                android:scaleType="fitXY"
+                android:src="@drawable/logout" />
+        </RelativeLayout>
 
     <LinearLayout
         android:orientation="vertical"
@@ -61,18 +62,16 @@
         android:orientation="horizontal">
 
 
-
-
-
         <androidx.cardview.widget.CardView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
+            android:layout_weight="1"
             android:layout_margin="12dp"
+            android:onClick="afficheplanificationtechnicien"
             app:cardCornerRadius="12dp"
-            app:cardElevation="6dp"
-            android:onClick="afficheplanificationtechnicien">
+            app:cardElevation="6dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -85,6 +84,7 @@
                     android:id="@+id/imageButton"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
+                    android:scaleType="fitXY"
                     android:src="@drawable/planification" />
 
                 <TextView
@@ -92,6 +92,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
+                    android:gravity="center"
                     android:text="PLANNIFICATION"
                     android:textSize="18dp" />
 
@@ -101,14 +102,15 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_margin="12dp"
+            android:layout_weight="1"
+            android:onClick="affichemaintenancetechnicien"
             app:cardCornerRadius="12dp"
-            app:cardElevation="6dp"
-            android:onClick="affichemaintenancetechnicien">
+            app:cardElevation="6dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -121,6 +123,7 @@
                     android:id="@+id/imageButton4"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
+                    android:scaleType="fitXY"
                     android:src="@drawable/maintenance" />
 
                 <TextView
@@ -128,6 +131,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
+                    android:gravity="center"
                     android:text="  MAINTENANCE  "
                     android:textSize="18dp" />
             </LinearLayout>
