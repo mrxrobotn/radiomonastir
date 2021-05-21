@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.radiomonastir.Adapters.UsersAdapter;
 import com.example.radiomonastir.Models.Users;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,7 +24,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GestionTechnicienActivity extends AppCompatActivity {
-    ImageButton imageButton5;
     RecyclerView recyclerView3;
     DatabaseReference myRef;
     List<Users> usersList =new ArrayList<>();
@@ -32,16 +32,7 @@ public class GestionTechnicienActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gesion_technicien);
-        imageButton5 = (ImageButton) findViewById(R.id.imageButton5);
         recyclerView3 = (RecyclerView) findViewById(R.id.recyclerView3);
-
-        imageButton5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(GestionTechnicienActivity.this, SignUpActivity.class);
-                startActivity(intent);
-            }
-        });
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView3.setLayoutManager(linearLayoutManager);
@@ -68,6 +59,17 @@ public class GestionTechnicienActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(GestionTechnicienActivity.this, "failed", Toast.LENGTH_LONG);
+            }
+        });
+    }
+
+    public void addmembre(View view) {
+        FloatingActionButton btnaddmembre= findViewById(R.id.btnaddmembre);
+        btnaddmembre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(GestionTechnicienActivity.this, SignUpActivity.class);
+                startActivity(intent);
             }
         });
     }
