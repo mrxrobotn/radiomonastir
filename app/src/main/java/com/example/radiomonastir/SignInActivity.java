@@ -34,7 +34,7 @@ public class SignInActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         if (mAuth.getCurrentUser() != null){
             String userEmail= mAuth.getCurrentUser().getEmail();
-            if (userEmail.equals("radiomonastir@gmail.com")){
+            if (userEmail.equals("charfi13@yahoo.fr")){
                 startActivity(new Intent(SignInActivity.this, HomeAdminActivity.class));
                 finish();
             }
@@ -62,7 +62,7 @@ public class SignInActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     // Sign in success, update UI with the signed-in user's information
-                                    if (champ_email.getText().toString().equals("radiomonastir@gmail.com"))
+                                    if (champ_email.getText().toString().equals("charfi13@yahoo.fr"))
                                     {
                                         FirebaseUser user = mAuth.getCurrentUser();
                                         Intent intent = new Intent(SignInActivity.this, HomeAdminActivity.class);
