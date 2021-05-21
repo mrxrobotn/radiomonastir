@@ -70,7 +70,7 @@
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:scaleType="fitXY"
-                        android:src="@drawable/act2" />
+                        app:srcCompat="@drawable/panne" />
 
                     <TextView
                         android:id="@+id/textView36"
@@ -106,7 +106,7 @@
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:scaleType="fitXY"
-                        android:src="@drawable/act2" />
+                        app:srcCompat="@drawable/demande" />
 
                     <TextView
                         android:id="@+id/textView37"
