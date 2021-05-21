@@ -93,7 +93,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:gravity="center"
-                    android:text="PLANNIFICATION"
+                    android:text="PLANNIFICA- TION"
                     android:textSize="18dp" />
 
 
@@ -132,7 +132,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:gravity="center"
-                    android:text="  MAINTENANCE  "
+                    android:text="MAINTENA- NCE"
                     android:textSize="18dp" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
